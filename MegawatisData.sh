@@ -8,68 +8,7 @@ BG_GREEN='\033[1;42m' BG_RED='\033[1;41m' BG_YELLOW='\033[1;43m'
 
 # DATABASE WHOAMIN
 USER_MAP=(
-    "6287866715150|u0_a326"
-    "6287769011377|u0_a449"
-    "6281385544726|u0_a719"
-    "Danxy|u0_a222"
-    "6288212286740|u0_a778"
-    "Danxy|u0_a384"
-    "6283121892414|u0_a166"
-    "6285298624517|u0_a928"
-    "6285777740915|u0_a269"
-    "62882005817504|u0_a488"
-    "Yeka_v4|u0_a681"
-    "6288227903186|u0_a357"
-    "62895328081275|u0_a533"
-    "62895373855888|u0_a244"
-    "6283816164817|u0_a389"
-    "6285147052178|u0_a393"
-    "6285248300233|u0_a637"
-    "6282245308912|u0_a264"
-    "6281291606812|u0_a456"
-    "6289531074644|u0_a340"
-    "6283838489595|u0_a368"
-    "Vaboo|u0_a257"
-    "6288235765242|u0_a428"
-    "60175638350|u0_a417"
-    "Yama|u0_a358"
-    "628895876624|u0_a525"
-    "62895706820010|u0_a299"
-    "6282340319193|u0_a707"
-    "6289654401357|u0_a352"
-    "6289515677473|u0_a401"
-    "62895424279134|u0_a337"
-    "6283143726466|u0_a892"
-    "6281228496424|u0_a317"
-    "62882006011680|u0_a307"
-    "6281330870931|u0_a307"
-    "6281342441206|u0_a405"
-    "6285846465686|u0_a304"
-    "6285253902283|u0_a330"
-    "6283193430005|u0_a1347"
-    "628985719345|u0_a2817"
-    "6285879527685|u0_a560"
-    "6283863044931|u0_a289"
-    "6289520097575|u0_a637"
-    "62881036634561|u0_a313"
-    "6285545106806|u0_a1096"
-    "628983807869|u0_a541"
-    "6285779003481|u0_a285"
-    "62881080593445|u0_a413"
-    "6287718005190|u0_a307"
-    "6282290802005|u0_a308"
-    "6283141623081|u0_a226"
-    "6283152408486|u0_a357"
-    "6285263278115|u0_a536"
-    "6283139373311|u0_a265"
-    "6282190080105|u0_a311"
-    "62881026705887|u0_a517"
-    "6285647379391|u0_a209"
-    "6285246491414|u0_a441"
-    "6283161574103|u0_a192"
-    "6283144811104|u0_a393"
-    "6287810951618|u0_a238"
-    "@Razor|u0_a485"
+    "Danxy|u0_a388"
                     # <-- masukkan nama|whoami baru di sini
 )
 # ---------- FUNGSI ----------
@@ -94,7 +33,7 @@ ${GREEN}┃             ${GREEN}${BOLD}TOOLS BY DANXY OFFICIAL${GREEN}          
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ${RED}┃          ${YELLOW}YT${RED}: ${GREEN}DanxyBot ${YELLOW}TT${RED}: ${GREEN}Qwela.38${RED}             ┃
 ${RED}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
-echo -e "    ${BG_RED}${YELLOW}WELCOME TO REGRISTRASI & LOGAIN TOOLS DANXY${NC}"
+echo -e "    ${BG_RED}${YELLOW}WELCOME TO REGRISTRASI & LOGIN TOOLS DANXY${NC}"
   echo -e "${BOLD}${BLINK}${RED}"
   echo -e "${GREEN}"
 }
@@ -125,7 +64,7 @@ login_by_name() {
     if [[ "$expected_who" == "$current_who" ]]; then
         echo -e "\n${GREEN}[ ✓ ] LOGIN BERHASIL SELAMAT DATANG, $nama.${NC}"
         sleep 1
-        bash <(curl -sL "https://raw.githubusercontent.com/11404d/1/refs/heads/main/DanxyAja.sh")
+        bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/DanxyAja.sh")
     else
         echo -e "\n${RED}[ ∅ ] PERANGKAT TIDAK COCOK UNTUK ID INI\"$nama\".${NC}"
         echo -e "${YELLOW}ID ANDA AYO BURUAN MINTA AKSES : $current_who${NC}"
