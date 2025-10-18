@@ -25,6 +25,16 @@ MAGENTA='\033[1;95m'
 WHITE='\033[1;97m'
 EOF
 
+RED='\e[38;5;196m'
+GREEN='\e[38;5;82m'
+YELLOW='\e[38;5;226m'
+BLUE='\e[38;5;39m'
+PURPLE='\e[38;5;201m'
+CYAN='\e[38;5;51m'
+WHITE='\e[38;5;255m'
+ORANGE='\e[38;5;208m'
+RESET='\e[0m'
+
 RED='\033[38;5;196m'
 GREEN='\033[38;5;40m'
 YELLOW='\033[38;5;226m'
@@ -5958,7 +5968,8 @@ clear
  │  [   07   ] │ Checker Cyrpto BTC/USDT    │    │
  │  [   08   ] │ HACK CCTV                  │    │  
  │  [   09   ] │ GENERATOR HTML DEFACE      │    │  
- │  [   10   ] │ EXIF TOOLS                 │    │  
+ │  [   10   ] │ EXIF TOOLS                 │    │
+ │  [   11   ] │ SOURCEWEB                  │    │   
  │  [   00   ] │ KEMBALI KE MENU AWAL       │    │
  ╰─────────────┴────────────────────────────┴────╯
  │                                               │
@@ -6020,6 +6031,11 @@ clear
         exif_menu
         klik
         ;;
+      11)
+       klik
+       sourceWeb
+       klik
+        ;;
       00|0)
       klik
         echo "CLOSE MENU 2" | lolcat -p 0.7
@@ -6036,6 +6052,79 @@ clear
     klik
   done
 }
+
+sourceWeb() {
+  # Warna
+  MERAH='\e[38;5;196m'; HIJAU='\e[38;5;82m'; KUNING='\e[38;5;226m'
+  BIRU='\e[38;5;39m'; UNGU='\e[38;5;201m'; CYAN='\e[38;5;51m'
+  PUTIH='\e[38;5;255m'; RESET='\e[0m'
+
+  # Cek dependensi
+  for d in curl; do
+    command -v "$d" >/dev/null 2>&1 || {
+      echo -e "${MERAH}[ ∅ ] Install dulu:${RESET} pkg install $d"
+      return
+    }
+  done
+
+  # Cek storage
+  [[ -d "/storage/emulated/0" ]] || {
+    echo -e "${MERAH}[ ∅ ] Storage tidak ter-mount.${RESET}\n${KUNING}💡 Jalankan:${RESET} termux-setup-storage"
+    return
+  }
+
+  TARGET_DIR="/storage/emulated/0/HASIL SOURCE CODE"
+  mkdir -p "$TARGET_DIR"
+
+  clear
+  echo -e "  ${GREEN}● ${YELLOW}● ${RED}●
+${UNGU}╔════════════════════════════════════════════════════════╗
+${UNGU}║ ${CYAN}░██████╗██████╗░░█████╗░░██╗░░░░░░░██╗███████╗██████╗░${UNGU} ║
+${UNGU}║ ${CYAN}██╔════╝██╔══██╗██╔══██╗░██║░░██╗░░██║██╔════╝██╔══██╗${UNGU} ║
+${UNGU}║ ${CYAN}╚█████╗░██████╔╝██║░░╚═╝░╚██╗████╗██╔╝█████╗░░██████╦╝${UNGU} ║
+${UNGU}║ ${CYAN}░╚═══██╗██╔══██╗██║░░██╗░░████╔═████║░██╔══╝░░██╔══██╗${UNGU} ║
+${UNGU}║ ${CYAN}██████╔╝██║░░██║╚█████╔╝░░╚██╔╝░╚██╔╝░███████╗██████╦╝${UNGU} ║
+${UNGU}║ ${CYAN}╚═════╝░╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░╚═╝░░╚══════╝╚═════╝░${UNGU} ║
+${UNGU}║${RESET}           ${HIJAU}SOURCE CODE WEBSITE BY TOOLS V8.4${RESET}            ${UNGU}║
+${UNGU}╠════════════════════════════════════════════════════════╣${RESET}
+${UNGU}║${CYAN}███████████████████████████${GREEN}] [${CYAN}██████████████████████████${UNGU}║
+${UNGU}╠════════════════════════════════════════════════════════╝${RESET}
+${UNGU}║"
+  printf "${UNGU}╚═${GREEN}[ ${WHITE}${BOLD}Masukkan URL ${GREEN}]${RESET} ${BG_RED}${YELLOW}(http/https)${RESET} ${GREEN}: ${RESET}"
+  read -r URL
+
+  [[ $URL =~ ^https?:// ]] || {
+    echo -e "${MERAH}[∅] URL harus diawali http:// atau https://${RESET}"
+    echo -e "${KUNING}KEMBALI KE MENU OSIN DALAM 2 DETIK...${RESET}"
+    sleep 2
+    return
+  }
+
+  # Hitung nomor berikutnya
+  LAST=0
+  for f in "${TARGET_DIR}"/SourceByToolsV84\(*\).html; do
+    [[ -e $f ]] || continue
+    num=${f##*SourceByToolsV84(}
+    num=${num%%)*}
+    (( num > LAST )) && LAST=$num
+  done
+  NEXT=$((LAST + 1))
+  OUT="${TARGET_DIR}/SourceByToolsV84(${NEXT}).html"
+
+  echo -e "\n${HIJAU}[!] Mengunduh source code...${RESET}"
+  curl -Ls "$URL" -o "$OUT" && {
+    echo -e "\n${HIJAU}[✓] Berhasil! File tersimpan di:${RESET}"
+    echo -e "${PUTIH}   $OUT${RESET}"
+  } || echo -e "\n${MERAH}[∅] Gagal mengunduh, cek koneksi atau URL.${RESET}"
+
+  echo -e "\n${KUNING}Tekan Enter untuk kembali ke menu utama...${RESET}"
+  read -r
+}
+
+
+
+
+
 
 
 
