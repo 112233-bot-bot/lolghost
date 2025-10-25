@@ -8101,10 +8101,159 @@ PHP
 }
 
 bruteforce_zip() {
-  read -p "Masukkan file ZIP: " zipfile
-  read -p "Masukkan wordlist: " wordlist
-  fcrackzip -u -D -p "$wordlist" "$zipfile"
-  read -p "Tekan Enter untuk kembali..."
+    local RED='\033[0;31m'
+    local GREEN='\033[0;32m'
+    local YELLOW='\033[1;33m'
+    local BLUE='\033[0;34m'
+    local NC='\033[0m'
+    
+    local WORDLIST_URL="https://raw.githubusercontent.com/DanxyOfficial/pas/refs/heads/main/kunci.sh"
+    local WORDLIST_FILE="kunci.sh"
+    
+    clear
+    echo -e "
+  ${GREEN}● ${YELLOW}● ${RED}●                                                  ${RED}TOOLS V8.4${BLUE}        
+┌──────────────────────────────────────────────────────────────────┐
+│  ${GREEN}0${RED}            ${GREEN}0${RED} ██████╗ ███████╗███████╗██╗██████╗     ${GREEN}0${RED}        ${GREEN}0${BLUE}│
+│ ${GREEN}0${RED}        ${GREEN}0${RED}      ██╔══██╗██╔════╝╚════██║██║██╔══██╗      ${GREEN}0${BLUE}       │
+│   ${GREEN}0${RED}        ${GREEN}0${RED}    ██████╦╝█████╗ ${GREEN}0${RED}  ███╔═╝██║██████╔╝  ${GREEN}0${RED}       ${GREEN}0${BLUE}   │
+│     ${GREEN}0${RED}    ${GREEN}0${RED}      ██╔══██╗██╔══╝  ██╔══╝  ██║██╔═══╝${GREEN}0${RED}     ${GREEN}0${BLUE}        │
+│${GREEN}0${RED}         ${GREEN}0${RED}      ██████╦╝██║  ${GREEN}0${RED}  ███████╗██║██║  ${GREEN}0${RED}            ${GREEN}0${BLUE}   │
+│    ${GREEN}0${RED}        ${GREEN}0${RED}   ╚═════╝ ╚═╝${GREEN}0${RED} ${GREEN}0${RED}  ╚══════╝╚═╝╚═╝${GREEN}0${RED}        ${GREEN}0${BLUE}         │
+└──────────────────────────────────────────────────────────────────┘
+│ ${GREEN}FITUR INI BERGUNA UNTUK MEMECAHKAN PASWORD FILE ZIP YANG TERKUNCI${BLUE}│
+└──────────────────────────────────────────────────────────────────┘"
+    if ! command -v unzip &> /dev/null; then
+        echo -e "${RED}Error: unzip tidak terinstall!${NC}"
+        echo "Install: pkg install unzip"
+        read -p "Tekan ENTER untuk kembali..."
+        return 1
+    fi
+    echo -e "${YELLOW}"
+    read -p " MASUKAN PATH FILE ZIP : " ZIP_FILE
+    
+    if [ -z "$ZIP_FILE" ]; then
+        echo -e "${RED}Error: Path file tidak boleh kosong!${NC}"
+        read -p "Tekan ENTER untuk kembali..."
+        return 1
+    fi
+    
+    if [ ! -f "$ZIP_FILE" ]; then
+        echo -e "${RED}Error: File '$ZIP_FILE' tidak ditemukan!${NC}"
+        read -p "Tekan ENTER untuk kembali..."
+        return 1
+    fi
+    
+    echo ""
+    echo -e "${GREEN}✓ File ditemukan: $ZIP_FILE${NC}"
+    echo ""
+    
+    echo -e "${YELLOW}"
+    read -p "MEMULAI BRUTE FORCE ZIP ? (Y/N): " CONFIRM
+    
+    if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
+        echo -e "${RED}DI BATALKAN${NC}"
+        read -p "Tekan ENTER untuk kembali..."
+        return 0
+    fi
+    
+    echo ""
+    echo -e "${BLUE}[*] Memulai proses...${NC}"
+    echo ""
+    
+    # Download wordlist jika belum ada
+    if [ ! -f "$WORDLIST_FILE" ]; then
+        echo -e "${YELLOW}[*] Mendownload wordlist dari GitHub...${NC}"
+        
+        if command -v curl &> /dev/null; then
+            curl -s -o "$WORDLIST_FILE" "$WORDLIST_URL"
+        elif command -v wget &> /dev/null; then
+            wget -q -O "$WORDLIST_FILE" "$WORDLIST_URL"
+        else
+            echo -e "${RED}Error: curl atau wget tidak ditemukan!${NC}"
+            read -p "Tekan ENTER untuk kembali..."
+            return 1
+        fi
+        
+        if [ $? -eq 0 ] && [ -f "$WORDLIST_FILE" ]; then
+            echo -e "${GREEN}✓ Wordlist berhasil didownload${NC}"
+        else
+            echo -e "${RED}✗ Gagal mendownload wordlist${NC}"
+            read -p "Tekan ENTER untuk kembali..."
+            return 1
+        fi
+        echo ""
+    fi
+    
+    local TOTAL=$(wc -l < "$WORDLIST_FILE" 2>/dev/null || echo 0)
+    local ATTEMPTS=0
+    local START_TIME=$(date +%s)
+    
+    echo -e "${BLUE}[*] Total password yang akan dicoba: ${GREEN}$TOTAL${NC}"
+    echo -e "${BLUE}[*] Memulai bruteforce...${NC}"
+    echo ""
+    
+    while IFS= read -r PASSWORD || [ -n "$PASSWORD" ]; do
+        [ -z "$PASSWORD" ] && continue
+        
+        ((ATTEMPTS++))
+        if ((ATTEMPTS % 50 == 0)); then
+            local PERCENT=$((ATTEMPTS * 100 / TOTAL))
+            echo -ne "${YELLOW}[*] Progress: $ATTEMPTS/$TOTAL ($PERCENT%) - Testing: $PASSWORD${NC}\r"
+        fi
+        
+        if unzip -P "$PASSWORD" -t "$ZIP_FILE" &>/dev/null; then
+            local END_TIME=$(date +%s)
+            local ELAPSED=$((END_TIME - START_TIME))
+            
+            echo -e "\n"
+            echo -e "${GREEN}┌================================${NC}"
+            echo -e "${GREEN}│✓ PASSWORD DITEMUKAN!${NC}"
+            echo -e "${GREEN}│================================${NC}"
+            echo -e "${GREEN}│Password: ${YELLOW}$PASSWORD${NC}"
+            echo -e "${GREEN}│Percobaan: $ATTEMPTS/$TOTAL${NC}"
+            echo -e "${GREEN}│Waktu: ${ELAPSED} detik${NC}"
+            echo -e "${GREEN}└================================${NC}"
+            echo ""
+            
+            if [[ "$EXTRACT" =~ ^[Yy]$ ]]; then
+                local OUTPUT_DIR="extracted_$(date +%s)"
+                echo ""
+                echo -e "${BLUE}[*] Mengekstrak ke folder: $OUTPUT_DIR${NC}"
+                
+                if unzip -P "$PASSWORD" "$ZIP_FILE" -d "$OUTPUT_DIR" &>/dev/null; then
+                    echo -e "${GREEN}✓ File berhasil diekstrak!${NC}"
+                    echo -e "${GREEN}Lokasi: $OUTPUT_DIR${NC}"
+                else
+                    echo -e "${RED}✗ Gagal mengekstrak file${NC}"
+                fi
+            fi
+            
+            echo ""
+            read -p "Tekan ENTER untuk kembali..."
+            return 0
+        fi
+        
+    done < "$WORDLIST_FILE"
+    
+    local END_TIME=$(date +%s)
+    local ELAPSED=$((END_TIME - START_TIME))
+    
+    echo -e "\n"
+    echo -e "${RED}┌================================${NC}"
+    echo -e "${RED}│✗ Password tidak ditemukan${NC}"
+    echo -e "${RED}│================================${NC}"
+    echo -e "${RED}│Total percobaan: $ATTEMPTS${NC}"
+    echo -e "${RED}│Waktu: ${ELAPSED} detik${NC}"
+    echo -e "${RED}└================================${NC}"
+    echo ""
+    echo -e "${YELLOW}Tips:${NC}"
+    echo -e "- Pastikan password ada di wordlist"
+    echo -e "- Update wordlist di: $WORDLIST_URL"
+    echo -e "- Atau tambahkan password manual ke file: $WORDLIST_FILE"
+    echo ""
+    read -p "Tekan ENTER untuk kembali..."
+    return 1
 }
 
 exif_tool() {
