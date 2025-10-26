@@ -351,7 +351,7 @@ echo -e "${GREEN}
  │  [  ${RED}13${GREEN}  ]  │ ${YELLOW}ENCRYPS CODE ${GREEN}           │[  MUSIK  ] MUSIK ALBUM   │
  │  [  ${RED}14${GREEN}  ]  │ ${YELLOW}LACAK NAMA${GREEN}              │[  DARK   ] MENU DARK     │
  │  [  ${RED}15${GREEN}  ]  │ ${YELLOW}LACAK LOKASI NOMOR (IP)${GREEN} │[  ATKTG  ] MENU ATTACK TG│
- │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │                          │
+ │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │[    AI   ] WORM GPT AI   │
  │  [  ${RED}17${GREEN}  ]  │ ${YELLOW}MENU TRACKING${GREEN}           │                          │
  │  [  ${RED}18${GREEN}  ]  │ ${YELLOW}MENU OSIN${GREEN}               │                          │
  │  [  ${RED}19${GREEN}  ]  │ ${YELLOW}MENU GHOS TRACK${GREEN}         │                          │
@@ -581,6 +581,11 @@ ATKTG|atktg)
     kembali_ke_menu
     klik
     ;;
+AI|ai)
+   klik
+WormGPT
+   klik
+    ;;
     00|0)
     klik
       echo -e "${CYAN}TERIMAKASIH SUDAH MENGGUNAKAN TOOLS DANXY.${NC}" | lolcat -p 0.7
@@ -597,6 +602,10 @@ ATKTG|atktg)
   done
 }
 
+
+WormGPT() {
+  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/WormAi.sh")
+}
 
 R='\e[38;5;196m'  # merah neon
 G='\e[38;5;082m'  # hijau terang
@@ -6756,6 +6765,8 @@ generate_flow
 cctv() {
   bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/cctv.sh")
 }
+
+
 ########################################################################
 
 crypto_check() {
