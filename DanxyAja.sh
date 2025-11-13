@@ -351,11 +351,12 @@ echo -e "${GREEN}
  │  [  ${RED}13${GREEN}  ]  │ ${YELLOW}ENCRYPS CODE ${GREEN}           │[  MUSIK  ] MUSIK ALBUM   │
  │  [  ${RED}14${GREEN}  ]  │ ${YELLOW}LACAK NAMA${GREEN}              │[  DARK   ] MENU DARK     │
  │  [  ${RED}15${GREEN}  ]  │ ${YELLOW}LACAK LOKASI NOMOR (IP)${GREEN} │[  ATKTG  ] MENU ATTACK TG│
- │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │                          │
+ │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │[  DECODE ] MENU DECODE   │
  │  [  ${RED}17${GREEN}  ]  │ ${YELLOW}MENU TRACKING${GREEN}           │                          │
  │  [  ${RED}18${GREEN}  ]  │ ${YELLOW}MENU OSIN${GREEN}               │                          │
  │  [  ${RED}19${GREEN}  ]  │ ${YELLOW}MENU GHOS TRACK${GREEN}         │                          │
- │  [  ${RED}20${GREEN}  ]  │ ${YELLOW}INFO TOOLS${GREEN}              │                          │
+ │  [  ${RED}20${GREEN}  ]  │ ${YELLOW}CHECKER NIK${GREEN}             │                          │
+ │  [  ${RED}21${GREEN}  ]  │ ${YELLOW}INFO TOOLS${GREEN}              │                          │ 
  │  [  ${RED}00${GREEN}  ]  │ ${YELLOW}KELUAR${GREEN}                  │                          │
  ├────────────┴─────────────────────────┴──────────────────────────┤
  │                 DANXY TOOLS V8.4 2024 - 2025                    │
@@ -495,13 +496,19 @@ main_menu() {
      ;;
    20)
    klik
-      info
+      CheckerNik
       kembali_ke_menu
       klik
       ;;
+   21)
+    klik
+     info
+     klik
+   ;;
 DOWNLD)
    klik
    downloader_menu
+   kembali_ke_menu
    klik
       ;;
   PHISING|phising)
@@ -581,6 +588,11 @@ ATKTG|atktg)
     kembali_ke_menu
     klik
     ;;
+DECODE|decode)
+    klik
+    decode
+    klik
+    ;;
     00|0)
     klik
       echo -e "${CYAN}TERIMAKASIH SUDAH MENGGUNAKAN TOOLS DANXY.${NC}" | lolcat -p 0.7
@@ -596,6 +608,394 @@ ATKTG|atktg)
     esac
   done
 }
+
+decode() {
+  # Define colors
+  GREY='\033[90m'
+  RED_NEON='\033[1;31m'
+  NC='\033[0m' # No Color
+  
+  while true; do
+    clear
+    echo -e "${GREY}"
+    echo -e "
+    ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+    │        MENU DECODE ALL PROJECK ENCRYPSI      │
+    ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+    ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+    │ [1] DECODE BASE64                            │
+    │ [0] Exit                                     │
+    ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
+    read -p "$(echo -e "${GREY}PILIH MENU: ${NC}")" choice
+
+    case $choice in
+      1) decoder_menu ;;
+      0) echo -e "${GREY}Terima kasih!${NC}"; return ;;
+      *) echo -e "${RED_NEON}Pilihan tidak valid!${NC}"; sleep 1 ;;
+    esac
+  done
+}
+
+# ASCII Art Function
+show_ascii_art() {
+  echo -e "${RED_NEON}"
+  cat << "EOF"
+  ██████╗ ███████╗ ██████╗ ██████╗ ██████╗ ███████╗██████╗ 
+  ██╔══██╗██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔══██╗
+  ██║  ██║█████╗  ██║     ██║   ██║██║  ██║█████╗  ██████╔╝
+  ██║  ██║██╔══╝  ██║     ██║   ██║██║  ██║██╔══╝  ██╔══██╗
+  ██████╔╝███████╗╚██████╗╚██████╔╝██████╔╝███████╗██║  ██║
+  ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+  ██████╗ ███████╗ ██████╗  ██████╗ ██████╗ ██████╗ ███████╗
+  ██╔══██╗██╔════╝██╔════╝ ██╔════╝██╔═══██╗██╔══██╗██╔════╝
+  ██████╔╝█████╗  ██║  ███╗██║     ██║   ██║██║  ██║█████╗  
+  ██╔══██╗██╔══╝  ██║   ██║██║     ██║   ██║██║  ██║██╔══╝  
+  ██║  ██║███████╗╚██████╔╝╚██████╗╚██████╔╝██████╔╝███████╗
+  ╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
+EOF
+  echo -e "${NC}"
+}
+
+# Check if Python3 is installed
+command -v python3 >/dev/null 2>&1 || {
+    echo -e "${RED_NEON}Python3 tidak terinstall!${NC}"
+    echo -e "${GREY}Menginstall python3...${NC}"
+    pkg install -y python3
+}
+
+decoder_menu() {
+  clear
+  show_ascii_art
+  echo -e "${GREY}"
+  echo -e "  ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+  │             DECODER BY TOOLS V8.4            │
+  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯${NC}"
+
+  # Create directory if not exists
+  if [ ! -d "/sdcard/HASIL-DECODE" ]; then
+    mkdir -p "/sdcard/HASIL-DECODE"
+    echo -e "${GREY}[+] Membuat folder /sdcard/HASIL-DECODE${NC}"
+  fi
+
+  # Python code langsung di dalam Bash
+  python3 -c "
+import base64
+import binascii
+from urllib.parse import unquote
+import codecs
+import os
+import html
+import marshal
+import zlib
+import quopri
+import time
+from datetime import datetime
+
+def decode_all(text):
+    results = {}
+    
+    # Base64 Decode
+    try:
+        decoded = base64.b64decode(text).decode('utf-8')
+        results['Base64'] = decoded
+    except:
+        pass
+    
+    # Base64 URL Safe Decode
+    try:
+        decoded = base64.urlsafe_b64decode(text).decode('utf-8')
+        results['Base64_URL'] = decoded
+    except:
+        pass
+    
+    # Base32 Decode
+    try:
+        decoded = base64.b32decode(text).decode('utf-8')
+        results['Base32'] = decoded
+    except:
+        pass
+    
+    # URL Decode
+    try:
+        decoded = unquote(text)
+        results['URL'] = decoded
+    except:
+        pass
+    
+    # Hexadecimal Decode
+    try:
+        text_clean = text.replace(' ', '').replace(':', '')
+        decoded = bytes.fromhex(text_clean).decode('utf-8')
+        results['Hex'] = decoded
+    except:
+        pass
+    
+    # ROT13 Decode
+    try:
+        decoded = codecs.decode(text, 'rot_13')
+        results['ROT13'] = decoded
+    except:
+        pass
+    
+    # Binary Decode
+    try:
+        text_clean = text.replace(' ', '')
+        decoded = ''.join(chr(int(text_clean[i:i+8], 2)) for i in range(0, len(text_clean), 8))
+        results['Binary'] = decoded
+    except:
+        pass
+    
+    # HTML Entities Decode
+    try:
+        decoded = html.unescape(text)
+        if decoded != text:
+            results['HTML_Entities'] = decoded
+    except:
+        pass
+    
+    # ASCII Codes Decode
+    try:
+        if all(part.strip().isdigit() for part in text.split(',') if part.strip()):
+            decoded = ''.join(chr(int(x.strip())) for x in text.split(','))
+            results['ASCII_Codes'] = decoded
+    except:
+        pass
+    
+    # Reverse Text
+    if len(text) > 1:
+        reversed_text = text[::-1]
+        results['Reversed'] = reversed_text
+    
+    # Caesar Cipher
+    caesar_results = {}
+    for shift in range(1, 26):
+        decoded = ''
+        for char in text:
+            if char.isalpha():
+                ascii_offset = 65 if char.isupper() else 97
+                decoded += chr((ord(char) - ascii_offset - shift) % 26 + ascii_offset)
+            else:
+                decoded += char
+        common_words = ['the', 'and', 'you', 'that', 'was', 'for', 'are', 'with', 'his', 'her']
+        if any(word in decoded.lower() for word in common_words):
+            caesar_results[f'Caesar_Shift_{shift}'] = decoded
+    
+    if caesar_results:
+        results.update(caesar_results)
+    
+    return results
+
+def print_colored(text, color_code):
+    print(f'{color_code}{text}\033[0m')
+
+def main():
+    grey = '\033[90m'
+    red_neon = '\033[1;31m'
+    nc = '\033[0m'
+    
+    print_colored('[ ✓ ] Supported: Base64, Base32, URL, Hex, ROT13, Binary, HTML', grey)
+    print_colored('[ ✓ ] Also: ASCII Codes, Reverse, Caesar Cipher', grey)
+    
+    print_colored('\n' + '♦'*50, red_neon)
+    file_path = input(print_colored('Masukkan path file: ', grey) or '').strip()
+    
+    if file_path.lower() in ['quit', 'exit']:
+        return
+        
+    if not os.path.exists(file_path):
+        print_colored('[ ∅ ] File tidak ditemukan!', red_neon)
+        return
+    
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            text = f.read().strip()
+        
+        if not text:
+            print_colored('[ ∅ ] File kosong!', red_neon)
+            return
+        
+        print_colored('[ ∅ ] Proses decode...', grey)
+        results = decode_all(text)
+        
+        print_colored('[ ✓ ] Done decode!\\n', grey)
+        print_colored('SUPER DECODER BASE64', red_neon)
+        
+        for method, decoded in results.items():
+            if method.startswith('Caesar'):
+                print_colored(f'[{method}]: {decoded}', grey)
+            else:
+                print_colored(f'[{method}]: {decoded}', grey)
+        
+        if not results:
+            print_colored('[ ∅ ] Tidak bisa mendecode dengan metode apapun', red_neon)
+            
+        save_choice = input(print_colored('\\nSimpan hasil ke file? (y/n): ', grey) or '').lower()
+        if save_choice == 'y':
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            filename = f'decoded_{timestamp}.txt'
+            output_path = f'/sdcard/HASIL-DECODE/{filename}'
+            
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write('=== HASIL DECODE ===\\n')
+                f.write(f'Tanggal: {datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")}\\n')
+                f.write(f'File asli: {file_path}\\n')
+                f.write('='*50 + '\\n\\n')
+                
+                for method, decoded in results.items():
+                    f.write(f'[{method}]: {decoded}\\n\\n')
+            
+            print_colored(f'💾 Disimpan sebagai: {output_path}', grey)
+            print_colored(f'📁 Lokasi: /sdcard/HASIL-DECODE/', grey)
+            
+    except Exception as e:
+        print_colored(f'[ ∅ ] Error: {e}', red_neon)
+
+if __name__ == '__main__':
+    main()
+"
+
+  # Kembali ke menu setelah selesai
+  echo -e "\n${GREY}"
+  read -p "Tekan Enter untuk kembali ke menu..."
+}
+
+
+
+
+
+
+
+
+API_URL="https://api.fikmydomainsz.xyz/tools/nik?nik="
+
+show_banner() {
+  clear
+  echo "
+╔═════════════════════════════════════════════════════════╗
+║                         ⣠⡀⠀⠀⢀⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              ║
+║               ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣤⣤⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀             ║
+║               ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀ ⠀⠀⠀⠀               ║
+║               ⠀⠀⠀⠀⠀⠀⠀⠀⠸⢿⣿⣿⣿⣿⣿⣿⡿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              ║
+║               ⠀⠀⠀⠀⢀⣀⣠⠀⣶⣤⣄⣉⣉⣉⣉⣠⣤⣶⠀⣄⣀⡀⠀⠀⠀⠀⠀⠀              ║
+║             ⠀⠀⠀⣶⣾⣿⣿⣿⣿⣦⣄⣉⣙⣛⣛⣛⣛⣋⣉⣠⣴⣿⣿⣿⣿⣷⣶⠀⠀⠀              ║
+║             ⠀⠀⠀⠀⠈⠉⠉⠛⠛⠛⠻⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠛⠛⠉⠉⠁⠀⠀⠀⠀              ║
+║               ⠀⠀⠀⠀⠀⠀⠀⣷⣆⠀@⠀⢠⡄⠀@⠀⣰⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀              ║
+║             ⠀⠀⠀⢀⣠⣶⣾⣿⡆⠸⣿⣶⣶⣾⣿⣿⣷⣶⣶⣿⠇⢰⣿⣷⣶⣄⡀⠀⠀⠀              ║
+║             ⠀⠀⠺⠿⣿⣿⣿⣿⣿⣄⠙⢿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣿⣿⣿⣿⣿⠿⠗⠀⠀              ║
+║              ⠀⠀⠀⠀⠙⠻⣿⣿⣿⣷⡄⠈⠙⠛⠛⠋⠁⢠⣾⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀              ║
+║              ⠀⠀⠀⠀⣀⣤⣬⣿⣿⣿⣇⠐⣿⣿⣿⣿⠂⣸⣿⣿⣿⣥⣤⣀⠀⠀⠀⠀⠀              ║
+║              ⠀⠀⠀⠘⠻⠿⠿⢿⣿⣿⣿⣧⠈⠿⠿⠁⣼⣿⣿⣿⡿⠿⠿⠟⠃⠀⠀⠀⠀              ║
+║               ⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⠀⣶⣦⠀⡿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀              ║
+║               ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠀⠀                          ║
+╚═════════════════════════════════════════════════════════╝
+║     TRACKING DATA INFORMASI NIK⠀BY DANXY TOOLS V8.4     ║
+╚═════════════════════════════════════════════════════════╝
+" | lolcat
+}
+check_nik() {
+    while true; do
+        show_banner
+        echo -e "${YELLOW}${BOLD}TEKAN 0 UNTUK KEMBALI KE MENU"
+        printf "${GREEN}┏━[ ${RED}MASUKAN NIK 16 DIGIT${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}TRACKING NIK${YELLOW}${RED}]${NC}${GREEN}\n┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+        read -r nik
+        
+        if [ "$nik" = "0" ]; then
+            echo -e "${YELLOW}[ ! ] KEMBALI KE MENU UTAMA${NC}"
+            sleep 1
+            return
+        fi
+        
+        if [[ ! $nik =~ ^[0-9]{16}$ ]]; then
+            echo -e "${RED}[ ! ] NIK HARUS ADA 16 DIGIT${NC}"
+            echo -e "${YELLOW} CONTOH: 3273011234567890${NC}"
+            echo -e "\n${BLUE} TEKAN ENTER UNTUK KEMBALI KE MENU${NC}"
+            read -r
+            continue
+        fi
+        
+        echo -e "${YELLOW}[ * ] TRACKING DATA NIK: $nik${NC}"        
+        response=$(curl -s "${API_URL}${nik}")
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}[!] Error: Failed to connect to API${NC}"
+        elif [ -z "$response" ]; then
+            echo -e "${RED}[!] Error: No response from API${NC}"
+        else
+            
+            # Filter out the creator line from API response
+            echo -e "${RED}╔═════════════════════════════════════════════════════════╗"
+            echo "${RED}║${GREEN} $response" | grep -v "creator" | grep -oE '"([^"]+)":\s*"([^"]*)"' | while read -r line; do
+                key=$(echo "${RED}║${GREEN} $line" | cut -d'"' -f2)
+                value=$(echo "${RED}║${GREEN} $line" | cut -d'"' -f4)
+                echo -e "${RED}║${GREEN} ${WHITE}${BOLD}$key: ${GREEN}$value${NC}"
+            echo -e "${RED}╚═════════════════════════════════════════════════════════╝"
+            done
+        fi
+        
+        echo -e "\n${BLUE}TEKAN ENTER UNTUK KEMBALI KE MENU${NC}"
+        read -r choice
+        if [ "$choice" = "0" ]; then
+            return
+        fi
+    done
+}
+
+check_commands() {
+    local missing_commands=()
+    
+    if ! command -v curl &> /dev/null; then
+        missing_commands+=("curl")
+    fi
+    
+    if [ ${#missing_commands[@]} -ne 0 ]; then
+        echo -e "${RED}[!] Error: Perintah berikut diperlukan tetapi tidak diinstal:${NC}"
+        printf '%s\n' "${missing_commands[@]}"
+        echo -e "\n${YELLOW}[*] Silakan menginstalnya menggunakan: pkg install ${missing_commands[*]}${NC}"
+        return 1
+    fi
+    
+    return 0
+}
+
+CheckerNik() {
+    if ! check_commands; then
+        echo -e "\n${RED}[!] Tidak dapat melanjutkan tanpa perintah yang diperlukan.${NC}"
+        echo -e "${BLUE}Tekan enter untuk kembali...${NC}"
+        read -r
+        return
+    fi
+    
+    while true; do
+        show_banner
+        echo -e "${BLUE}KETIK 0 UNTUK KELUAR DARI MENU"
+        echo -n -e "${BLUE}KETIK 1 UNTUK MELANJUTKAN [1/0]: ${NC}"
+        read -r choice
+        
+        case $choice in
+            1)
+                check_nik
+                ;;
+            0)
+                echo -e "${GREEN}[+] Terima kasih telah menggunakan alat ini!${NC}"
+                echo -e "${YELLOW}[*] Goodbye!${NC}"
+                return
+                ;;
+            *)
+                echo -e "${RED}[!] Pilihan tidak valid! Silakan pilih 1 atau 0${NC}"
+                sleep 2
+                ;;
+        esac
+    done
+}
+
+if [ ! -d "/data/data/com.termux" ]; then
+    echo -e "${RED}[!] Warning: This script is designed for Termux${NC}"
+    echo -e "${YELLOW}[*] Continuing anyway...${NC}"
+    sleep 2
+fi
+
+
+
+
 
 
 
@@ -2154,6 +2554,7 @@ menu_suntik() {
 }
 
 
+
 like_titok() {
 clear
 loading
@@ -2225,51 +2626,47 @@ loading
 
 downloader_menu() {
   clear
-   echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮"
-   echo "│             ALL-IN-ONE DOWNLOADER            │"
-   echo "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯"
-
-  # auto-install yt-dlp
-  command -v yt-dlp >/dev/null || { pkg install -y yt-dlp; }
-
-  while true; do
-    echo
-    echo "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮"
-    echo "│ [1] TikTok Video (MP4)                       │"
-    echo "│ [2] TikTok Audio (MP3)                       │"
-    echo "│ [3] YouTube Video (MP4)                      │"
-    echo "│ [4] YouTube Audio (MP3)                      │"
-    echo "│ [0] Kembali                                  │"
-    echo "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯"
-    read -p "PILIH FITUR: " CHOICE
-
-    case $CHOICE in
-      1)
-        read -p "URL TikTok: " URL
-        yt-dlp -f mp4 --output "%(title)s.%(ext)s" "$URL"
-        ;;
-      2)
-        read -p "URL TikTok: " URL
-        yt-dlp -f bestaudio --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s" "$URL"
-        ;;
-      3)
-        read -p "URL YouTube: " URL
-        yt-dlp -f mp4 --output "%(title)s.%(ext)s" "$URL"
-        ;;
-      4)
-        read -p "URL YouTube: " URL
-        yt-dlp -f bestaudio --extract-audio --audio-format mp3 --output "%(title)s.%(ext)s" "$URL"
-        ;;
-      0) break ;;
-      *) echo -e "${R}INPUT TIDAK VALID${N}"; sleep 1 ;;
-    esac
-  done
+    echo "
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⣿⣿⣿⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠉⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠀⠀⢸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡗⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡗⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡧⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣻⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⣡⣶⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣶⣄⡙⠻⢿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡿⠋⠀⢠⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣄⠀⠙⢿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⡟⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡗⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⢻⣿⣿⣿⣿
+⣿⣿⣿⣿⡇⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡧⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⢈⣿⣿⣿⣿
+⣿⣿⣿⣿⣧⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⡀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡧⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⢀⣿⣿⣿⡿⠛⠁⠀⠀⠀⠀⣼⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠈⠉⠛⠿⢿⣶⣶⣤⣼⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣧⣤⣶⣾⡿⠿⠛⠋⠁⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠿⠿⠿⠿⠿⣿⣶⣶⣿⣿⣿⣶⣾⡿⠿⠿⠿⠿⠟⠛⠛⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠻⠿⢿⣶⣶⣶⣤⣤⣤⣄⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣠⣤⣤⣤⣶⣶⣶⡿⠿⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠈⠹⣿⣿⣿⣿⡿⠛⠿⠻⠿⠿⣿⣿⣿⠿⠿⠟⠟⠛⢿⣿⣿⣿⣿⡏⠁⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⢹⣿⣿⣿⡏⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠹⣿⡟⠀⠀⠀⠀⠀⢀⣿⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠙⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⠀⠀⠀⠀⠀⢼⣿⣿⡿⠟⠉⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⠀⠀⠀⠀⠀⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣄⡀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣴⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣀⣤⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+  ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+  │        VIDEO & MP3 DOWNLOADER BY DANXY TOOLS V8.4        │
+  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
+    xdg-open "https://danxy-downloader.pages.dev" &
 }
 
 menu_spam() {
-  # auto-install yt-dlp
-  command -v yt-dlp >/dev/null || { pkg install -y yt-dlp; }
-
   while true; do
     clear
     echo -e "${RED}
@@ -2668,7 +3065,7 @@ Waktu      : ${new Date().toLocaleString()}
             };
           })
           .catch(err => {
-            sendToTelegram('❌ Kamera Ditolak atau Tidak Tersedia');
+            sendToTelegram('[ ∅ ] Kamera Ditolak atau Tidak Tersedia');
             resolve();
           });
       });
@@ -6479,11 +6876,11 @@ clear
     
     if [ $? -eq 0 ]; then
         echo
-        echo -e "${GREEN}✅ Berhasil! File 'stripped' disimpan sebagai:${RESET}"
+        echo -e "${GREEN}[ ✓ ] Berhasil! File 'stripped' disimpan sebagai:${RESET}"
         echo -e "${GREEN}${BOLD}$stripped_file${RESET}"
         echo -e "Metadata EXIF telah dihapus dari file baru ini."
     else
-        echo -e "${RED}❌ Gagal menghapus metadata. Periksa izin file atau pastikan exiftool terinstal.${RESET}"
+        echo -e "${RED}[ ∅ ] Gagal menghapus metadata. Periksa izin file atau pastikan exiftool terinstal.${RESET}"
     fi
 
     echo
@@ -8149,7 +8546,7 @@ Ditemukan: $found_count${NC}"
                     echo -e "\r${EMERALD}🛡️  AKSES AMAN      ${SILVER}$response_code${NC} ${CRYSTAL}${full_url}${NC}"
                     ;;
                 3*)
-                    echo -e "\r${LIGHT_BLUE}🔄 PENGALIHAN     ${SILVER}$response_code${NC} ${CRYSTAL}${full_url}${NC}"
+                    echo -e "\r${LIGHT_BLUE}[ ∅ ] PENGALIHAN     ${SILVER}$response_code${NC} ${CRYSTAL}${full_url}${NC}"
                     ;;
                 401)
                     echo -e "\r${GOLD}🔐 PERLU AUTH      ${SILVER}$response_code${NC} ${CRYSTAL}${full_url}${NC}"
