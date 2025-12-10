@@ -94,6 +94,8 @@ NC='\033[0m'
 YOUTUBE_URL="https://www.youtube.com/@DanxyOfficial"
 LAGU_YOUTUBE="https://youtu.be/MunnYFmqWYo" # URL Lagu
 LAPOR_TOOLS_ERROR="https://wa.me/6285647260693?text=*LAPOR TOOLS ERROR BANG*"
+VERCEL_TOKEN="4nbpNOcDNQtgz57POhZG3TWk"
+API="https://api.vercel.com"
 # Animasi Loading
 
 
@@ -373,7 +375,7 @@ echo -e "${GREEN}
  │  [  ${RED}14${GREEN}  ]  │ ${YELLOW}LACAK NAMA${GREEN}              │[  DARK   ] MENU DARK     │
  │  [  ${RED}15${GREEN}  ]  │ ${YELLOW}LACAK LOKASI NOMOR (IP)${GREEN} │[  ATKTG  ] MENU ATTACK TG│
  │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │[  DECODE ] MENU DECODE   │
- │  [  ${RED}17${GREEN}  ]  │ ${YELLOW}MENU TRACKING${GREEN}           │                          │
+ │  [  ${RED}17${GREEN}  ]  │ ${YELLOW}MENU TRACKING${GREEN}           │[  DEPLOY ] MENU DEPLOY   │
  │  [  ${RED}18${GREEN}  ]  │ ${YELLOW}MENU OSIN${GREEN}               │                          │
  │  [  ${RED}19${GREEN}  ]  │ ${YELLOW}MENU GHOS TRACK${GREEN}         │                          │
  │  [  ${RED}20${GREEN}  ]  │ ${YELLOW}CHECKER NIK${GREEN}             │                          │
@@ -526,6 +528,7 @@ main_menu() {
    21)
     klik
      info
+     kembali_ke_menu
      klik
    ;;
 DOWNLD)
@@ -616,6 +619,12 @@ DECODE|decode)
     decode
     klik
     ;;
+DEPLOY|deploy)
+    klik
+    menu_deploy
+    kembali_ke_menu
+    klik
+    ;;
     00|0)
     klik
       echo -e "${CYAN}TERIMAKASIH SUDAH MENGGUNAKAN TOOLS DANXY.${NC}" | lolcat -p 0.7
@@ -631,6 +640,130 @@ DECODE|decode)
     esac
   done
 }
+
+
+menu_deploy() {  
+  while true; do
+    clear
+    echo -e "${GREY}"
+    echo -e "        ${GREEN}● ${YELLOW}● ${RED}●                                        ${GREEN}● ${YELLOW}● ${RED}●"
+    echo -e "
+       ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+       │         MENU ALL MULTIFUNGSI DEPLOYMENT           │
+       ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+       ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+       │ [1] DEPLOY VERCEL                                 │
+       │ [0] Exit                                          │
+       ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
+    printf "${GREEN}       ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}PILIH MENU${YELLOW}${RED}]${NC}${GREEN}\n       ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+    read -r choice
+
+    case $choice in
+      1) deploy-vercel ;;
+      0) echo -e "${GREY} KELUAR DARI MENU DEPLOY!${NC}"; return ;;
+      *) echo -e "${RED_NEON} MASUKAN APA YANG ADA BUKAN NGADA NGADA!${NC}"; sleep 1 ;;
+    esac
+  done
+}
+
+deploy-vercel() {
+clear
+echo ""
+echo -e "
+  ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+  │ ██╗░░░██╗███████╗██████╗░░█████╗░███████╗██╗░░░░░ │
+  │ ██║░░░██║██╔════╝██╔══██╗██╔══██╗██╔════╝██║░░░░░ │
+  │ ╚██╗░██╔╝█████╗░░██████╔╝██║░░╚═╝█████╗░░██║░░░░░ │
+  │ ░╚████╔╝░██╔══╝░░██╔══██╗██║░░██╗██╔══╝░░██║░░░░░ │
+  │ ░░╚██╔╝░░███████╗██║░░██║╚█████╔╝███████╗███████╗ │
+  │ ░░░╚═╝░░░╚══════╝╚═╝░░╚═╝░╚════╝░╚══════╝╚══════╝ │
+  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+  │          AUTO DEPLOY HTML TO VERCEL INSTAN        │
+  ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯[ V0.1 ]
+" | lolcat -p 0.7
+echo -e "   ${GREEN}● ${YELLOW}● ${RED}●"
+printf "${GREEN}  ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MASUKAN PATH FILE HTML${YELLOW}${RED}]${NC}${GREEN}\n  ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+read -r FILE
+        
+[[ ! -f "$FILE" ]] && echo "[ ∅ ] FILE TIDAK DI TEMUKAN!" && return
+echo ""
+echo -e "${GREEN}${BOLD}MASUKIN NAMA DOMAIN 8 DIGIT${YELLOW}"
+echo -e "${GREEN}${BOLD}CONTOH: danxy-tools-v84"
+read -p "NAMA DOMAIN (tanpa .vercel.app): " DOMAIN_BASE
+
+PROJECT_NAME="$DOMAIN_BASE"
+
+CONTENT=$(base64 -w 0 "$FILE")
+
+PAYLOAD=$(cat <<EOF
+{
+"name": "$PROJECT_NAME",
+"target": "production",
+"projectSettings": {
+"framework": null,
+"devCommand": null,
+"buildCommand": null,
+"outputDirectory": null
+},
+"files": [
+{
+"file": "index.html",
+"data": "$CONTENT",
+"encoding": "base64"
+}
+]
+}
+EOF
+)
+
+echo "Deploy..."
+RESP=$(curl -s -X POST "$API/v13/deployments" \
+-H "Authorization: Bearer $VERCEL_TOKEN" \
+-H "Content-Type: application/json" \
+-d "$PAYLOAD")
+
+DEPLOY_ID=$(echo "$RESP" | jq -r ".id")
+RAND_URL=$(echo "$RESP" | jq -r ".url")
+
+[[ -z "$DEPLOY_ID" ]] && echo "❌ Deploy gagal" && echo "$RESP" | jq && return
+
+echo "Menunggu READY..."
+while true; do
+STATE=$(curl -s "$API/v13/deployments/$DEPLOY_ID" \
+-H "Authorization: Bearer $VERCEL_TOKEN" | jq -r ".readyState")
+echo "   Status: $STATE"
+[[ "$STATE" == "READY" ]] && break
+sleep 2
+done
+
+COUNTER=0
+DOMAIN="$DOMAIN_BASE"
+
+while true; do
+ALIAS="${DOMAIN}.vercel.app"
+
+RES=$(curl -s -X POST "$API/v2/aliases" \
+-H "Authorization: Bearer $VERCEL_TOKEN" \
+-H "Content-Type: application/json" \
+-d "{"deploymentId": "$DEPLOY_ID", "domain": "$ALIAS"}")
+
+CODE=$(echo "$RES" | jq -r ".error.code // empty")
+
+[[ -z "$CODE" ]] && FINAL_URL="https://$ALIAS" && break
+
+[[ "$CODE" != "alias_in_use" ]] && FINAL_URL="https://$RAND_URL" && break
+
+COUNTER=$((COUNTER + 1))
+DOMAIN="${DOMAIN_BASE}${COUNTER}"
+done
+
+echo "URL publik: $ALIAS"
+kembali_ke_menu
+}
+
+
+
+
 
 decode() {
   # Define colors
