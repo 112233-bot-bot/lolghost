@@ -151,28 +151,28 @@ banner() {
 
 show_menu() {
   echo -e "
-          ╭───────────────────────────────────────────────╮
-          │             DANXY TOOLS VERSI FREE            │
-          ╭───────┬────────────────────────────┬──────────╮
-          │ [ 1 ] │ LACAK NOMOR (eWallet)  ∅   │   JAM    │
-          │ [ 2 ] │ LACAK NAMA (LeakOSINT)     │ $(date +'%H:%M:%S') │
-          │ [ 3 ] │ SUNTIK TIKTOK          ∅   │          │
-          │ [ 4 ] │ CEK PROVIDER NOMOR         │          │
-          │ [ 5 ] │ SCAN WEBSITE               │          │
-          │ [ 6 ] │ CEK KEBOCORAN EMAIL  ∅     │          │
-          │ [ 7 ] │ INFO TOOLS                 │          │
-          │ [ 8 ] │ KIRIM OTP (WA/SMS)         │          │
-          │ [ 9 ] │ CEK IP ADDRESS             │          │
-          │ [ 10] │ SPAM NGL UNLIMITED         │          │
-          │ [ 11] │ ASCII ART GENERATOR        │          │
-          │ [ 12] │ CEK NIK & KK               │          │
-          │ [ 0 ] │ KELUAR                     │          │
-          ╰───────┴────────────────────────────┴──────────╯
-          │                                               │
-          ╰───────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────╮
+│                       DANXY TOOLS VERSI FREE                      │
+╭───────┬────────────────────────────────────────────────┬──────────╮
+│ [ 1 ] │ LACAK NOMOR (eWallet)                          │   JAM    │
+│ [ 2 ] │ LACAK NAMA (LeakOSINT)                         │ $(date +'%H:%M:%S') │
+│ [ 3 ] │ SUNTIK TIKTOK                                  │          │
+│ [ 4 ] │ CEK PROVIDER NOMOR                             │          │
+│ [ 5 ] │ SCAN WEBSITE                                   │          │
+│ [ 6 ] │ CEK KEBOCORAN EMAIL                            │          │
+│ [ 7 ] │ INFO TOOLS                                     │          │
+│ [ 8 ] │ KIRIM OTP (WA/SMS)                             │          │
+│ [ 9 ] │ CEK IP ADDRESS                                 │          │
+│ [ 10] │ SPAM NGL UNLIMITED                             │          │
+│ [ 11] │ ASCII ART GENERATOR                            │          │
+│ [ 12] │ CEK NIK & KK                                   │          │
+│ [ 0 ] │ KELUAR                                         │          │
+╰───────┴────────────────────────────────────────────────┴──────────╯
+│                                                                   │
+╰───────────────────────────────────────────────────────────────────╯
 " | lolcat -p 0.7
-  echo -e "          ${GREEN}● ${YELLOW}● ${RED}●"
-  echo -e "          ${WHITE}DEVELOPER: ${BG_GREEN}${RED}DANXY OFFICIAL✓${NC}"
+  echo -e " ${GREEN}● ${YELLOW}● ${RED}●"
+  echo -e " ${WHITE}DEVELOPER: ${BG_GREEN}${RED}DANXY OFFICIAL✓${NC}"
 }
 
 
@@ -182,7 +182,7 @@ main_menu() {
   while true; do
     banner
     show_menu
-    printf "${GREEN}          ┏━[ ${RED}DANXY TOOLS V.FREE${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MENU UTAMA${YELLOW}${RED}]${NC}${GREEN}\n          ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+    printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V.FREE${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MENU UTAMA${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
     read -r danxy
 
     case $danxy in
