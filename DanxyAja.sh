@@ -653,20 +653,27 @@ LEAK|leak)
 }
 
 
-
-
 menu_leak-osint() {  
   while true; do
     clear
     echo -e "${GREY}"
-    echo -e "        ${GREEN}● ${YELLOW}● ${RED}●                                        ${GREEN}● ${YELLOW}● ${RED}●"
     echo -e "
+    ██▓    ▓█████ ▄▄▄       ██ ▄█▀ ▒█████    ██████  ██▓ ███▄    █ 
+   ▓██▒    ▓█   ▀▒████▄     ██▄█▒ ▒██▒  ██▒▒██    ▒ ▓██▒ ██ ▀█   █ 
+   ▒██░    ▒███  ▒██  ▀█▄  ▓███▄░ ▒██░  ██▒░ ▓██▄   ▒██▒▓██  ▀█ ██▒
+   ▒██░    ▒▓█  ▄░██▄▄▄▄██ ▓██ █▄ ▒██   ██░  ▒   ██▒░██░▓██▒  ▐▌██▒
+   ░██████▒░▒████▒▓█   ▓██▒▒██▒ █▄░ ████▓▒░▒██████▒▒░██░▒██░   ▓██░
+   ░ ▒░▓  ░░░ ▒░ ░▒▒   ▓▒█░▒ ▒▒ ▓▒░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░░▓  ░ ▒░   ▒ ▒ 
+   ░ ░ ▒  ░ ░ ░  ░ ▒   ▒▒ ░░ ░▒ ▒░  ░ ▒ ▒░ ░ ░▒  ░ ░ ▒ ░░ ░░   ░ ▒░
+     ░ ░      ░    ░   ▒   ░ ░░ ░ ░ ░ ░ ▒  ░  ░  ░   ▒ ░   ░   ░ ░ 
+       ░  ░   ░  ░     ░  ░░  ░       ░ ░        ░   ░           ░ 
 ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
 │                MENU LEAK OSINT BY DANXYTOOLS V8.4                 │
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
 │ [1] LEAK OSINT BPJS CHECKER                                       │
-│ [2] LEAK OSINT DESA SERU (WONOGIRI)                               │
+│ [2] LEAK OSINT POLRI CHECKER                                      │
+│ [3] LEAK OSINT RUNDOM CHECKER                                     │
 │ [0] Exit                                                          │
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
     printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}PILIH MENU${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
@@ -674,400 +681,25 @@ menu_leak-osint() {
 
     case $choice in
       1) menu_bpjsleak ;;
-      2) menu-leak-desa-seru ;;
+      2) menu_polri ;;
+      3) menu_rundom ;;
       0) echo -e "${GREY} KELUAR DARI MENU LEAK OSINT!${NC}"; return ;;
       *) echo -e "${RED_NEON} MASUKAN APA YANG ADA BUKAN NGADA NGADA!${NC}"; sleep 1 ;;
     esac
   done
 }
 
-
-
-
-menu-leak-desa-seru() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-leak-seru-bajingankontol.sh")
-}
-
-
-
-
-
 menu_bpjsleak() {
-    auto_update_on_start
-    
-    while true; do
-        clear
-        echo -e "
-    .____                  __   __________            __        
-    |    |    ____ _____  |  | _\______   \______    |__| ______
-    |    |  _/ __ \\__   \ |  |/ /|    |  _/\____ \   |  |/  ___/
-    |    |__\  ___/ / __ \|    < |    |   \|  |_> >  |  |\___ \ 
-    |_______ \___  >____  /__|_ \|______  /|   __/\__|  /____  >
-            \/   \/     \/     \/       \/ |__|  \______|    \/ " | lolcat -p 0.7
-        echo -e "${BLUE}╔══════════════════════════════════════════════════════════════════╗${NC}"
-        echo -e "${BLUE}║${GREEN}                  BPJS CHECKER - DANXYTOOLS V8.4                  ${BLUE}║${NC}"
-        echo -e "${BLUE}╠══════════════════════════════════════════════════════════════════╣${NC}"
-        
-        # Tampilin status data
-        if [ -f "$DEEP_FILE" ]; then
-            local total=$(jq length "$DEEP_FILE" 2>/dev/null)
-            local size=$(du -h "$DEEP_FILE" 2>/dev/null | cut -f1)
-            echo -e "${BLUE}║${WHITE}  Total Data      : ${GREEN}${total} records${BLUE}                                ║${NC}"
-            echo -e "${BLUE}║${WHITE}  Ukuran File     : ${GREEN}${size}${BLUE}                                           ║${NC}"
-            
-            # Tampilin umur data
-            if [ -f "$DEEP_FILE" ]; then
-                local file_time=$(stat -c %Y "$DEEP_FILE" 2>/dev/null)
-                local current_time=$(date +%s)
-                local hours=$(((current_time - file_time) / 3600))
-            fi
-        else
-            echo -e "${BLUE}║${RED}  GAGAL CEK KONEKSI                         ${BLUE}║${NC}"
-        fi
-        
-        echo -e "${BLUE}╠══════════════════════════════════════════════════════════════════╣${NC}"
-        echo -e "${BLUE}║                                                                  ║${NC}"
-        echo -e "${BLUE}║  ${WHITE}[1]${GREEN} ➤${NC}  Cari Berdasarkan NIK                                     ${BLUE}║${NC}"
-        echo -e "${BLUE}║  ${WHITE}[2]${GREEN} ➤${NC}  Cari Berdasarkan No Telepon                              ${BLUE}║${NC}"
-        echo -e "${BLUE}║  ${WHITE}[3]${RED} ➤${NC}  Keluar                                                   ${BLUE}║${NC}"
-        echo -e "${BLUE}║                                                                  ║${NC}"
-        echo -e "${BLUE}╚══════════════════════════════════════════════════════════════════╝${NC}"
-        
-        printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MENU LEAK BPJS${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
-        read -r menu
-        
-        
-if ! command -v curl &> /dev/null; then
-    echo -e "${RED}Error: curl tidak terinstall${NC}"
-    exit 1
-fi
-
-if ! command -v jq &> /dev/null; then
-    echo -e "${RED}Error: jq tidak terinstall${NC}"
-    exit 1
-fi
-
-# Fungsi animasi
-animate_process() {
-    local pid=$1
-    local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
-    local charwidth=3
-    local i=0
-    
-    echo -ne "\n${YELLOW}"
-    while kill -0 $pid 2>/dev/null; do
-        i=$(( (i+charwidth) % ${#spin} ))
-        printf "\r${CYAN}[⣿] ${YELLOW}Mengecek Module... ${spin:$i:$charwidth} ${NC}"
-    done
-    printf "\r${GREEN}[✓] Module Complete!                   ${NC}\n"
+  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-bpjs.sh")
 }
 
-# Fungsi bikin folder dalem
-create_deep_path() {
-    if [ ! -d "$DEEP_PATH" ]; then
-        mkdir -p "$DEEP_PATH" 2>/dev/null
-        chmod 700 "$DEEP_PATH" 2>/dev/null
-    fi
+menu_polri() {
+  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-polri.sh")
 }
 
-# Fungsi update data
-update_data() {
-    clear
-    echo -e "${BLUE}╔════════════════════════════════════════════╗${NC}"
-    echo -e "${BLUE}║${GREEN}          PROSES UPDATE DATABASE            ${BLUE}║${NC}"
-    echo -e "${BLUE}╚════════════════════════════════════════════╝${NC}"
-    echo ""
-    
-    echo -e "${YELLOW}[•] Mempersiapkan...${NC}"
-    create_deep_path
-    
-    # Cek koneksi dulu
-    echo -e "${YELLOW}[•] Memeriksa koneksi...${NC}"
-    if ! ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
-        echo -e "${RED}[✗] Tidak ada koneksi internet!${NC}"
-        return 1
-    fi
-    
-    echo -e "${YELLOW}[•] Loading...${NC}"
-    
-    
-    # Download dengan background process
-    (
-        curl -s -o "$DEEP_FILE" "$GITHUB_RAW_URL"
-    ) &
-    
-    # Jalankan animasi
-    animate_process $!
-    
-    # Cek hasil download
-    if [ -f "$DEEP_FILE" ] && [ -s "$DEEP_FILE" ]; then
-        echo -e "${YELLOW}[•] Memvalidasi Lingkungan...${NC}"
-        
-        
-        # Validasi JSON
-        if jq empty "$DEEP_FILE" 2>/dev/null; then
-            chmod 444 "$DEEP_FILE" 2>/dev/null
-            local total=$(jq length "$DEEP_FILE")
-            echo -e "\n${YELLOW}Data siap digunakan!${NC}"
-            return 0
-        else
-            rm -f "$DEEP_FILE" 2>/dev/null
-            echo -e "\n${RED}[✗] Data corrupt! Koneksi internet Terganggu...${NC}"
-            return 1
-        fi
-    else
-        echo -e "\n${RED}[✗] Gagal Periksa koneksi.${NC}"
-        return 1
-    fi
+menu_rundom() {
+  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-rundom.sh")
 }
-
-# Fungsi auto update setiap kali tools dijalankan
-auto_update_on_start() {
-    echo -e "\n${YELLOW}MEMVALIDASI LINGKUNGAN${NC}"
-    update_data
-    
-    # Kalo gagal update, kasih peringatan
-    if [ $? -ne 0 ]; then
-        echo -e "\n${RED} ${NC}"
-        echo -e "${YELLOW} Pastikan koneksi internet aktif.${NC}"
-        return 1
-    fi
-    return 0
-}
-
-# Cek data
-check_data() {
-    if [ ! -f "$DEEP_FILE" ] || [ ! -s "$DEEP_FILE" ]; then
-        echo -e "${RED}[✗] Data belum ada!${NC}"
-        return 1
-    fi
-    
-    if ! jq empty "$DEEP_FILE" 2>/dev/null; then
-        echo -e "${RED}[✗] File corrupt!${NC}"
-        return 1
-    fi
-    
-    return 0
-}
-
-# Bersihin NIK
-clean_nik() {
-    local nik="$1"
-    nik=$(echo "$nik" | sed 's/"//g')
-    
-    if [[ "$nik" =~ ^[0-9]+\.[0-9]+E\+[0-9]+$ ]]; then
-        local base=$(echo "$nik" | cut -d'E' -f1)
-        local exponent=$(echo "$nik" | cut -d'E' -f2 | sed 's/+//')
-        local int_part=$(echo "$base" | cut -d'.' -f1)
-        local decimal_part=$(echo "$base" | cut -d'.' -f2)
-        local dec_len=${#decimal_part}
-        local result="$int_part$decimal_part"
-        local zeros=$((exponent - dec_len))
-        
-        for ((i=0; i<$zeros; i++)); do
-            result="${result}0"
-        done
-        
-        while [ ${#result} -lt 16 ]; do
-            result="0$result"
-        done
-        
-        echo "${result:0:16}"
-        return
-    fi
-    
-    echo "$nik" | tr -cd '0-9'
-}
-
-clean_phone() {
-    echo "$1" | sed 's/[^0-9]//g'
-}
-
-# Display data
-display_data() {
-    local index="$1"
-    local json_data="$2"
-    
-    local nik=$(echo "$json_data" | jq -r ".[$index].\"NIK (ID CARD)\"")
-    local name=$(echo "$json_data" | jq -r ".[$index].NAME")
-    local gender=$(echo "$json_data" | jq -r ".[$index].GENDER")
-    local birthdate=$(echo "$json_data" | jq -r ".[$index].BIRTHDATE")
-    local phone=$(echo "$json_data" | jq -r ".[$index].\"PHONE NUMBER\"")
-    local address=$(echo "$json_data" | jq -r ".[$index].ADDRESS")
-    local district=$(echo "$json_data" | jq -r ".[$index].DISTRICT")
-    local subdistrict=$(echo "$json_data" | jq -r ".[$index].SUBDISTRICT")
-    local city=$(echo "$json_data" | jq -r ".[$index].CITY")
-    
-    local nik_clean=$(clean_nik "$nik")
-    local phone_clean=$(clean_phone "$phone")
-    echo -e "
-${WHITE}╔═══════════════════════════════════════════════════════╗
-${WHITE}║Index         : ${YELLOW}$index${NC}
-${WHITE}║NIK Asli      : ${YELLOW}$nik${NC}
-${WHITE}║NIK Clean     : ${GREEN}$nik_clean${NC}
-${WHITE}║Nama          : ${YELLOW}$name${NC}"
-    
-    if [ "$gender" == "Laki-Laki" ]; then
-    echo -e "${WHITE}║Gender        : ${YELLOW}$gender 👨${NC}"
-    elif [ "$gender" == "Perempuan" ]; then
-    echo -e "${WHITE}║Gender        : ${YELLOW}$gender 👩${NC}"
-    else
-    echo -e "${WHITE}║Gender        : ${YELLOW}$gender${NC}"
-    fi
-    
-    echo -e "
-${WHITE}║Tanggal Lahir : ${YELLOW}$birthdate${NC}
-${WHITE}║No Telepon    : ${YELLOW}$phone${NC}
-${WHITE}║No Telepon    : ${GREEN}$phone_clean (clean)${NC}
-${WHITE}║Alamat        : ${YELLOW}$address${NC}
-${WHITE}║Kecamatan     : ${YELLOW}$district${NC}
-${WHITE}║Kelurahan     : ${YELLOW}$subdistrict${NC}
-${WHITE}║Kota/Kab      : ${YELLOW}$city${NC}
-${WHITE}╚═══════════════════════════════════════════════════════╝"
-}
-
-# Search by phone
-search_by_phone() {
-    clear
-    echo -e "
-                CHECKER-NUMBER BY DANXYTOOLS V8.4
- 0   ╔═══════════════════════════════════════════════════════╗0 0
-0   0║ ███╗░░██╗██╗░░░██╗███╗░░░███╗░█████╗░███████╗██╗░░██╗ ║  0 0
- 0  0║ ████╗░██║██║░░░██║████╗░████║██╔══██╗██╔════╝██║░██╔╝ ║ 0 0
-  0  ║ ██╔██╗██║██║░░░██║██╔████╔██║██║░░╚═╝█████╗░░█████═╝░ ║   0
-0  0 ║ ██║╚████║██║░░░██║██║╚██╔╝██║██║░░██╗██╔══╝░░██╔═██╗░ ║ 0  0
-  0  ║ ██║░╚███║╚██████╔╝██║░╚═╝░██║╚█████╔╝███████╗██║░╚██╗ ║  0  0
-0 0 0║ ╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝░╚════╝░╚══════╝╚═╝░░╚═╝ ║ 0  0
-  0  ╚═══════════════════════════════════════════════════════╝ 0 0
-╔══════════════════════════════════════════════════════════════════╗
-║               MASUKKAN NOMOR TELEPON BERAWALAN 08                ║
-╚══════════════════════════════════════════════════════════════════╝${NC}" | lolcat -p 0.7
-    printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MASUKAN NOMOR${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
-    read -r input_phone
-    if ! check_data; then
-        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
-        read
-        return
-    fi
-   
-    
-    if [ -z "$input_phone" ]; then
-        echo -e "\n${RED}✗ No Telepon tidak boleh kosong!${NC}"
-        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
-        read
-        return
-    fi
-    
-    input_phone=$(clean_phone "$input_phone")
-    
-    echo -e "\n${GREEN}Mencari data...${NC}"
-    
-    local json_data=$(cat "$DEEP_FILE")
-    local total=$(echo "$json_data" | jq length)
-    local found=0
-    
-    for ((i=0; i<$total; i++)); do
-        local phone=$(echo "$json_data" | jq -r ".[$i].\"PHONE NUMBER\"")
-        local phone_clean=$(clean_phone "$phone")
-        
-        if [[ "$phone_clean" == *"$input_phone"* ]]; then
-            echo -e "\n${GREEN}✓ Data ditemukan!${NC}"
-            display_data "$i" "$json_data"
-            found=1
-            break
-        fi
-    done
-    
-    if [ $found -eq 0 ]; then
-        echo -e "${RED}           DATA TIDAK DITEMUKAN             ${NC}"
-    fi
-    
-    echo -e "\n${YELLOW}Tekan Enter untuk kembali ke menu...${NC}"
-    read
-}
-
-# Search by NIK
-search_by_nik() {
-    clear
-    echo -e "
-                CHECKER-NUMBER BY DANXYTOOLS V8.4
- 0   ╔═══════════════════════════════════════════════════════╗0 0
-0  0 ║     ███╗░░██╗██╗██╗░░██╗░█████╗░███████╗██╗░░██╗      ║ 0
-   0 ║     ████╗░██║██║██║░██╔╝██╔══██╗██╔════╝██║░██╔╝      ║0  0
-0    ║     ██╔██╗██║██║█████═╝░██║░░╚═╝█████╗░░█████═╝░      ║ 0
-  0  ║     ██║╚████║██║██╔═██╗░██║░░██╗██╔══╝░░██╔═██╗░      ║0  0
-0  0 ║     ██║░╚███║██║██║░╚██╗╚█████╔╝███████╗██║░╚██╗      ║ 0
-  0  ║     ╚═╝░░╚══╝╚═╝╚═╝░░╚═╝░╚════╝░╚══════╝╚═╝░░╚═╝      ║0 0
-0    ╚═══════════════════════════════════════════════════════╝ 0 0
-╔══════════════════════════════════════════════════════════════════╗
-║                    MASUKKAN NOMOR NIK 16 DIGIT                   ║
-╚══════════════════════════════════════════════════════════════════╝${NC}" | lolcat -p 0.7
-
-    printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MASUKAN NIK 16 DIGIT${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
-    read -r input_nik
-    
-
-    if ! check_data; then
-        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
-        read
-        return
-    fi
-
-    if [ -z "$input_nik" ]; then
-        echo -e "\n${RED}✗ NIK tidak boleh kosong!${NC}"
-        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
-        read
-        return
-    fi
-    
-    input_nik=$(clean_nik "$input_nik")
-    
-    echo -e "\n${GREEN}Mencari data...${NC}"
-    
-    local json_data=$(cat "$DEEP_FILE")
-    local total=$(echo "$json_data" | jq length)
-    local found=0
-    
-    for ((i=0; i<$total; i++)); do
-        local nik_data=$(echo "$json_data" | jq -r ".[$i].\"NIK (ID CARD)\"")
-        local nik_clean=$(clean_nik "$nik_data")
-        
-        if [ "$nik_clean" == "$input_nik" ]; then
-            echo -e "\n${GREEN}✓ Data ditemukan!${NC}"
-            display_data "$i" "$json_data"
-            found=1
-            break
-        fi
-    done
-    
-    if [ $found -eq 0 ]; then
-        echo -e "${RED}                   DATA TIDAK DITEMUKAN                   ${NC}"
-    fi
-    
-    echo -e "\n${YELLOW}Tekan Enter untuk kembali ke menu...${NC}"
-    read
-}
-        
-        case $menu in
-            1) search_by_nik ;;
-            2) search_by_phone ;;
-            3) 
-                clear
-                return 
-                ;;
-            *) 
-                echo -e "\n${RED}✗ Pilihan tidak valid!${NC}"
-                ;;
-        esac
-    done
-}
-
-
-
-
-
-
-
 
 
 
