@@ -132,8 +132,8 @@ search_by_name() {
     echo -e "${CYAN}[i] Mencari data untuk nama: $nama_input${NC}"
     echo -e "${GRAY}─────────────────────────────────────────────────────────────────${NC}\n"
     
-    # Panggil API
-    response=$(curl -s -w "\n%{http_code}" "$API_POLRI/name/$nama")
+    # Panggil API - ENDPOINT DIUBAH
+    response=$(curl -s -w "\n%{http_code}" "$API_POLRI/api/search-name?name=$nama")
     http_code=$(echo "$response" | tail -n1)
     content=$(echo "$response" | sed '$d')
     
@@ -220,8 +220,8 @@ search_by_duty() {
     echo -e "${CYAN}[i] Mencari anggota dengan tugas: $duty_input${NC}"
     echo -e "${GRAY}─────────────────────────────────────────────────────────────────${NC}\n"
     
-    # Panggil API
-    response=$(curl -s -w "\n%{http_code}" "$API_POLRI/duty/$duty")
+    # Panggil API - ENDPOINT DIUBAH
+    response=$(curl -s -w "\n%{http_code}" "$API_POLRI/api/search-duty?duty=$duty")
     http_code=$(echo "$response" | tail -n1)
     content=$(echo "$response" | sed '$d')
     
@@ -307,8 +307,8 @@ search_by_phone() {
     echo -e "${CYAN}[i] Mencari data untuk nomor: $phone_input${NC}"
     echo -e "${GRAY}─────────────────────────────────────────────────────────────────${NC}\n"
     
-    # Panggil API
-    response=$(curl -s -w "\n%{http_code}" "$API_POLRI/phone/$phone")
+    # Panggil API - ENDPOINT DIUBAH
+    response=$(curl -s -w "\n%{http_code}" "$API_POLRI/api/search-phone?phone=$phone")
     http_code=$(echo "$response" | tail -n1)
     content=$(echo "$response" | sed '$d')
     
@@ -364,7 +364,7 @@ search_by_phone() {
         fi
     else
         echo -e "${RED}┌─────────────────────────────────────────────────────────────────┐${NC}"
-        echo -e "${RED}│${WHITE}                      ERROR KONEKSI                              ${RED}│${NC}"
+        echo -e "${RED}│${WHITE}                  DATA TIDAK DI TEMUKAN                          ${RED}│${NC}"
         echo -e "${RED}├─────────────────────────────────────────────────────────────────┤${NC}"
         echo -e "${RED}│${NC} HTTP Code: $http_code"
         echo -e "${RED}└─────────────────────────────────────────────────────────────────┘${NC}"
