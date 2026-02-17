@@ -94,6 +94,11 @@ NC='\033[0m'
 YOUTUBE_URL="https://www.youtube.com/@DanxyOfficial"
 LAGU_YOUTUBE="https://youtu.be/MunnYFmqWYo" # URL Lagu
 LAPOR_TOOLS_ERROR="https://wa.me/6285647260693?text=*LAPOR TOOLS ERROR BANG*"
+GITHUB_RAW_URL="https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/master/bpjs.json"
+DEEP_PATH="$HOME/.cache/.system/.hidden/.bpjs"
+DEEP_FILE="$DEEP_PATH/bpjs.json"
+
+
 VERCEL_TOKEN="4nbpNOcDNQtgz57POhZG3TWk"
 API="https://api.vercel.com"
 # Animasi Loading
@@ -376,7 +381,7 @@ echo -e "${GREEN}
  │  [  ${RED}15${GREEN}  ]  │ ${YELLOW}LACAK LOKASI NOMOR (IP)${GREEN} │[  ATKTG  ] MENU ATTACK TG│
  │  [  ${RED}16${GREEN}  ]  │ ${YELLOW}LAPORKAN BUG  ${GREEN}          │[  DECODE ] MENU DECODE   │
  │  [  ${RED}17${GREEN}  ]  │ ${YELLOW}MENU TRACKING${GREEN}           │[  DEPLOY ] MENU DEPLOY   │
- │  [  ${RED}18${GREEN}  ]  │ ${YELLOW}MENU OSIN${GREEN}               │                          │
+ │  [  ${RED}18${GREEN}  ]  │ ${YELLOW}MENU OSIN${GREEN}               │[   LEAK  ] MENU LEAKOSINT│
  │  [  ${RED}19${GREEN}  ]  │ ${YELLOW}MENU GHOS TRACK${GREEN}         │                          │
  │  [  ${RED}20${GREEN}  ]  │ ${YELLOW}CHECKER NIK${GREEN}             │                          │
  │  [  ${RED}21${GREEN}  ]  │ ${YELLOW}INFO TOOLS${GREEN}              │                          │ 
@@ -625,6 +630,12 @@ DEPLOY|deploy)
     kembali_ke_menu
     klik
     ;;
+LEAK|leak)
+   klik
+   menu_leak-osint
+   kembali_ke_menu
+   klik
+    ;;
     00|0)
     klik
       echo -e "${CYAN}TERIMAKASIH SUDAH MENGGUNAKAN TOOLS DANXY.${NC}" | lolcat -p 0.7
@@ -642,6 +653,431 @@ DEPLOY|deploy)
 }
 
 
+
+
+menu_leak-osint() {  
+  while true; do
+    clear
+    echo -e "${GREY}"
+    echo -e "        ${GREEN}● ${YELLOW}● ${RED}●                                        ${GREEN}● ${YELLOW}● ${RED}●"
+    echo -e "
+╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+│                MENU LEAK OSINT BY DANXYTOOLS V8.4                 │
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+│ [1] LEAK OSINT BPJS CHECKER                                       │
+│ [2] LEAK OSINT DESA SERU (WONOGIRI)                               │
+│ [0] Exit                                                          │
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
+    printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}PILIH MENU${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+    read -r choice
+
+    case $choice in
+      1) menu_bpjsleak ;;
+      2) menu-leak-desa-seru ;;
+      0) echo -e "${GREY} KELUAR DARI MENU LEAK OSINT!${NC}"; return ;;
+      *) echo -e "${RED_NEON} MASUKAN APA YANG ADA BUKAN NGADA NGADA!${NC}"; sleep 1 ;;
+    esac
+  done
+}
+
+
+
+
+menu-leak-desa-seru() {
+  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-leak-seru-bajingankontol.sh")
+}
+
+
+
+
+
+menu_bpjsleak() {
+    auto_update_on_start
+    
+    while true; do
+        clear
+        echo -e "
+    .____                  __   __________            __        
+    |    |    ____ _____  |  | _\______   \______    |__| ______
+    |    |  _/ __ \\__   \ |  |/ /|    |  _/\____ \   |  |/  ___/
+    |    |__\  ___/ / __ \|    < |    |   \|  |_> >  |  |\___ \ 
+    |_______ \___  >____  /__|_ \|______  /|   __/\__|  /____  >
+            \/   \/     \/     \/       \/ |__|  \______|    \/ " | lolcat -p 0.7
+        echo -e "${BLUE}╔══════════════════════════════════════════════════════════════════╗${NC}"
+        echo -e "${BLUE}║${GREEN}                  BPJS CHECKER - DANXYTOOLS V8.4                  ${BLUE}║${NC}"
+        echo -e "${BLUE}╠══════════════════════════════════════════════════════════════════╣${NC}"
+        
+        # Tampilin status data
+        if [ -f "$DEEP_FILE" ]; then
+            local total=$(jq length "$DEEP_FILE" 2>/dev/null)
+            local size=$(du -h "$DEEP_FILE" 2>/dev/null | cut -f1)
+            echo -e "${BLUE}║${WHITE}  Total Data      : ${GREEN}${total} records${BLUE}                                ║${NC}"
+            echo -e "${BLUE}║${WHITE}  Ukuran File     : ${GREEN}${size}${BLUE}                                           ║${NC}"
+            
+            # Tampilin umur data
+            if [ -f "$DEEP_FILE" ]; then
+                local file_time=$(stat -c %Y "$DEEP_FILE" 2>/dev/null)
+                local current_time=$(date +%s)
+                local hours=$(((current_time - file_time) / 3600))
+            fi
+        else
+            echo -e "${BLUE}║${RED}  GAGAL CEK KONEKSI                         ${BLUE}║${NC}"
+        fi
+        
+        echo -e "${BLUE}╠══════════════════════════════════════════════════════════════════╣${NC}"
+        echo -e "${BLUE}║                                                                  ║${NC}"
+        echo -e "${BLUE}║  ${WHITE}[1]${GREEN} ➤${NC}  Cari Berdasarkan NIK                                     ${BLUE}║${NC}"
+        echo -e "${BLUE}║  ${WHITE}[2]${GREEN} ➤${NC}  Cari Berdasarkan No Telepon                              ${BLUE}║${NC}"
+        echo -e "${BLUE}║  ${WHITE}[3]${RED} ➤${NC}  Keluar                                                   ${BLUE}║${NC}"
+        echo -e "${BLUE}║                                                                  ║${NC}"
+        echo -e "${BLUE}╚══════════════════════════════════════════════════════════════════╝${NC}"
+        
+        printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MENU LEAK BPJS${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+        read -r menu
+        
+        
+if ! command -v curl &> /dev/null; then
+    echo -e "${RED}Error: curl tidak terinstall${NC}"
+    exit 1
+fi
+
+if ! command -v jq &> /dev/null; then
+    echo -e "${RED}Error: jq tidak terinstall${NC}"
+    exit 1
+fi
+
+# Fungsi animasi
+animate_process() {
+    local pid=$1
+    local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
+    local charwidth=3
+    local i=0
+    
+    echo -ne "\n${YELLOW}"
+    while kill -0 $pid 2>/dev/null; do
+        i=$(( (i+charwidth) % ${#spin} ))
+        printf "\r${CYAN}[⣿] ${YELLOW}Mengecek Module... ${spin:$i:$charwidth} ${NC}"
+    done
+    printf "\r${GREEN}[✓] Module Complete!                   ${NC}\n"
+}
+
+# Fungsi bikin folder dalem
+create_deep_path() {
+    if [ ! -d "$DEEP_PATH" ]; then
+        mkdir -p "$DEEP_PATH" 2>/dev/null
+        chmod 700 "$DEEP_PATH" 2>/dev/null
+    fi
+}
+
+# Fungsi update data
+update_data() {
+    clear
+    echo -e "${BLUE}╔════════════════════════════════════════════╗${NC}"
+    echo -e "${BLUE}║${GREEN}          PROSES UPDATE DATABASE            ${BLUE}║${NC}"
+    echo -e "${BLUE}╚════════════════════════════════════════════╝${NC}"
+    echo ""
+    
+    echo -e "${YELLOW}[•] Mempersiapkan...${NC}"
+    create_deep_path
+    
+    # Cek koneksi dulu
+    echo -e "${YELLOW}[•] Memeriksa koneksi...${NC}"
+    if ! ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
+        echo -e "${RED}[✗] Tidak ada koneksi internet!${NC}"
+        return 1
+    fi
+    
+    echo -e "${YELLOW}[•] Loading...${NC}"
+    
+    
+    # Download dengan background process
+    (
+        curl -s -o "$DEEP_FILE" "$GITHUB_RAW_URL"
+    ) &
+    
+    # Jalankan animasi
+    animate_process $!
+    
+    # Cek hasil download
+    if [ -f "$DEEP_FILE" ] && [ -s "$DEEP_FILE" ]; then
+        echo -e "${YELLOW}[•] Memvalidasi Lingkungan...${NC}"
+        
+        
+        # Validasi JSON
+        if jq empty "$DEEP_FILE" 2>/dev/null; then
+            chmod 444 "$DEEP_FILE" 2>/dev/null
+            local total=$(jq length "$DEEP_FILE")
+            echo -e "\n${YELLOW}Data siap digunakan!${NC}"
+            return 0
+        else
+            rm -f "$DEEP_FILE" 2>/dev/null
+            echo -e "\n${RED}[✗] Data corrupt! Koneksi internet Terganggu...${NC}"
+            return 1
+        fi
+    else
+        echo -e "\n${RED}[✗] Gagal Periksa koneksi.${NC}"
+        return 1
+    fi
+}
+
+# Fungsi auto update setiap kali tools dijalankan
+auto_update_on_start() {
+    echo -e "\n${YELLOW}MEMVALIDASI LINGKUNGAN${NC}"
+    update_data
+    
+    # Kalo gagal update, kasih peringatan
+    if [ $? -ne 0 ]; then
+        echo -e "\n${RED} ${NC}"
+        echo -e "${YELLOW} Pastikan koneksi internet aktif.${NC}"
+        return 1
+    fi
+    return 0
+}
+
+# Cek data
+check_data() {
+    if [ ! -f "$DEEP_FILE" ] || [ ! -s "$DEEP_FILE" ]; then
+        echo -e "${RED}[✗] Data belum ada!${NC}"
+        return 1
+    fi
+    
+    if ! jq empty "$DEEP_FILE" 2>/dev/null; then
+        echo -e "${RED}[✗] File corrupt!${NC}"
+        return 1
+    fi
+    
+    return 0
+}
+
+# Bersihin NIK
+clean_nik() {
+    local nik="$1"
+    nik=$(echo "$nik" | sed 's/"//g')
+    
+    if [[ "$nik" =~ ^[0-9]+\.[0-9]+E\+[0-9]+$ ]]; then
+        local base=$(echo "$nik" | cut -d'E' -f1)
+        local exponent=$(echo "$nik" | cut -d'E' -f2 | sed 's/+//')
+        local int_part=$(echo "$base" | cut -d'.' -f1)
+        local decimal_part=$(echo "$base" | cut -d'.' -f2)
+        local dec_len=${#decimal_part}
+        local result="$int_part$decimal_part"
+        local zeros=$((exponent - dec_len))
+        
+        for ((i=0; i<$zeros; i++)); do
+            result="${result}0"
+        done
+        
+        while [ ${#result} -lt 16 ]; do
+            result="0$result"
+        done
+        
+        echo "${result:0:16}"
+        return
+    fi
+    
+    echo "$nik" | tr -cd '0-9'
+}
+
+clean_phone() {
+    echo "$1" | sed 's/[^0-9]//g'
+}
+
+# Display data
+display_data() {
+    local index="$1"
+    local json_data="$2"
+    
+    local nik=$(echo "$json_data" | jq -r ".[$index].\"NIK (ID CARD)\"")
+    local name=$(echo "$json_data" | jq -r ".[$index].NAME")
+    local gender=$(echo "$json_data" | jq -r ".[$index].GENDER")
+    local birthdate=$(echo "$json_data" | jq -r ".[$index].BIRTHDATE")
+    local phone=$(echo "$json_data" | jq -r ".[$index].\"PHONE NUMBER\"")
+    local address=$(echo "$json_data" | jq -r ".[$index].ADDRESS")
+    local district=$(echo "$json_data" | jq -r ".[$index].DISTRICT")
+    local subdistrict=$(echo "$json_data" | jq -r ".[$index].SUBDISTRICT")
+    local city=$(echo "$json_data" | jq -r ".[$index].CITY")
+    
+    local nik_clean=$(clean_nik "$nik")
+    local phone_clean=$(clean_phone "$phone")
+    echo -e "
+${WHITE}╔═══════════════════════════════════════════════════════╗
+${WHITE}║Index         : ${YELLOW}$index${NC}
+${WHITE}║NIK Asli      : ${YELLOW}$nik${NC}
+${WHITE}║NIK Clean     : ${GREEN}$nik_clean${NC}
+${WHITE}║Nama          : ${YELLOW}$name${NC}"
+    
+    if [ "$gender" == "Laki-Laki" ]; then
+    echo -e "${WHITE}║Gender        : ${YELLOW}$gender 👨${NC}"
+    elif [ "$gender" == "Perempuan" ]; then
+    echo -e "${WHITE}║Gender        : ${YELLOW}$gender 👩${NC}"
+    else
+    echo -e "${WHITE}║Gender        : ${YELLOW}$gender${NC}"
+    fi
+    
+    echo -e "
+${WHITE}║Tanggal Lahir : ${YELLOW}$birthdate${NC}
+${WHITE}║No Telepon    : ${YELLOW}$phone${NC}
+${WHITE}║No Telepon    : ${GREEN}$phone_clean (clean)${NC}
+${WHITE}║Alamat        : ${YELLOW}$address${NC}
+${WHITE}║Kecamatan     : ${YELLOW}$district${NC}
+${WHITE}║Kelurahan     : ${YELLOW}$subdistrict${NC}
+${WHITE}║Kota/Kab      : ${YELLOW}$city${NC}
+${WHITE}╚═══════════════════════════════════════════════════════╝"
+}
+
+# Search by phone
+search_by_phone() {
+    clear
+    echo -e "
+                CHECKER-NUMBER BY DANXYTOOLS V8.4
+ 0   ╔═══════════════════════════════════════════════════════╗0 0
+0   0║ ███╗░░██╗██╗░░░██╗███╗░░░███╗░█████╗░███████╗██╗░░██╗ ║  0 0
+ 0  0║ ████╗░██║██║░░░██║████╗░████║██╔══██╗██╔════╝██║░██╔╝ ║ 0 0
+  0  ║ ██╔██╗██║██║░░░██║██╔████╔██║██║░░╚═╝█████╗░░█████═╝░ ║   0
+0  0 ║ ██║╚████║██║░░░██║██║╚██╔╝██║██║░░██╗██╔══╝░░██╔═██╗░ ║ 0  0
+  0  ║ ██║░╚███║╚██████╔╝██║░╚═╝░██║╚█████╔╝███████╗██║░╚██╗ ║  0  0
+0 0 0║ ╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝░╚════╝░╚══════╝╚═╝░░╚═╝ ║ 0  0
+  0  ╚═══════════════════════════════════════════════════════╝ 0 0
+╔══════════════════════════════════════════════════════════════════╗
+║               MASUKKAN NOMOR TELEPON BERAWALAN 08                ║
+╚══════════════════════════════════════════════════════════════════╝${NC}" | lolcat -p 0.7
+    printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MASUKAN NOMOR${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+    read -r input_phone
+    if ! check_data; then
+        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
+        read
+        return
+    fi
+   
+    
+    if [ -z "$input_phone" ]; then
+        echo -e "\n${RED}✗ No Telepon tidak boleh kosong!${NC}"
+        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
+        read
+        return
+    fi
+    
+    input_phone=$(clean_phone "$input_phone")
+    
+    echo -e "\n${GREEN}Mencari data...${NC}"
+    
+    local json_data=$(cat "$DEEP_FILE")
+    local total=$(echo "$json_data" | jq length)
+    local found=0
+    
+    for ((i=0; i<$total; i++)); do
+        local phone=$(echo "$json_data" | jq -r ".[$i].\"PHONE NUMBER\"")
+        local phone_clean=$(clean_phone "$phone")
+        
+        if [[ "$phone_clean" == *"$input_phone"* ]]; then
+            echo -e "\n${GREEN}✓ Data ditemukan!${NC}"
+            display_data "$i" "$json_data"
+            found=1
+            break
+        fi
+    done
+    
+    if [ $found -eq 0 ]; then
+        echo -e "${RED}           DATA TIDAK DITEMUKAN             ${NC}"
+    fi
+    
+    echo -e "\n${YELLOW}Tekan Enter untuk kembali ke menu...${NC}"
+    read
+}
+
+# Search by NIK
+search_by_nik() {
+    clear
+    echo -e "
+                CHECKER-NUMBER BY DANXYTOOLS V8.4
+ 0   ╔═══════════════════════════════════════════════════════╗0 0
+0  0 ║     ███╗░░██╗██╗██╗░░██╗░█████╗░███████╗██╗░░██╗      ║ 0
+   0 ║     ████╗░██║██║██║░██╔╝██╔══██╗██╔════╝██║░██╔╝      ║0  0
+0    ║     ██╔██╗██║██║█████═╝░██║░░╚═╝█████╗░░█████═╝░      ║ 0
+  0  ║     ██║╚████║██║██╔═██╗░██║░░██╗██╔══╝░░██╔═██╗░      ║0  0
+0  0 ║     ██║░╚███║██║██║░╚██╗╚█████╔╝███████╗██║░╚██╗      ║ 0
+  0  ║     ╚═╝░░╚══╝╚═╝╚═╝░░╚═╝░╚════╝░╚══════╝╚═╝░░╚═╝      ║0 0
+0    ╚═══════════════════════════════════════════════════════╝ 0 0
+╔══════════════════════════════════════════════════════════════════╗
+║                    MASUKKAN NOMOR NIK 16 DIGIT                   ║
+╚══════════════════════════════════════════════════════════════════╝${NC}" | lolcat -p 0.7
+
+    printf "${GREEN} ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}MASUKAN NIK 16 DIGIT${YELLOW}${RED}]${NC}${GREEN}\n ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
+    read -r input_nik
+    
+
+    if ! check_data; then
+        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
+        read
+        return
+    fi
+
+    if [ -z "$input_nik" ]; then
+        echo -e "\n${RED}✗ NIK tidak boleh kosong!${NC}"
+        echo -e "\n${YELLOW}Tekan Enter untuk kembali...${NC}"
+        read
+        return
+    fi
+    
+    input_nik=$(clean_nik "$input_nik")
+    
+    echo -e "\n${GREEN}Mencari data...${NC}"
+    
+    local json_data=$(cat "$DEEP_FILE")
+    local total=$(echo "$json_data" | jq length)
+    local found=0
+    
+    for ((i=0; i<$total; i++)); do
+        local nik_data=$(echo "$json_data" | jq -r ".[$i].\"NIK (ID CARD)\"")
+        local nik_clean=$(clean_nik "$nik_data")
+        
+        if [ "$nik_clean" == "$input_nik" ]; then
+            echo -e "\n${GREEN}✓ Data ditemukan!${NC}"
+            display_data "$i" "$json_data"
+            found=1
+            break
+        fi
+    done
+    
+    if [ $found -eq 0 ]; then
+        echo -e "${RED}                   DATA TIDAK DITEMUKAN                   ${NC}"
+    fi
+    
+    echo -e "\n${YELLOW}Tekan Enter untuk kembali ke menu...${NC}"
+    read
+}
+        
+        case $menu in
+            1) search_by_nik ;;
+            2) search_by_phone ;;
+            3) 
+                clear
+                return 
+                ;;
+            *) 
+                echo -e "\n${RED}✗ Pilihan tidak valid!${NC}"
+                ;;
+        esac
+    done
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 menu_deploy() {  
   while true; do
     clear
@@ -653,6 +1089,7 @@ menu_deploy() {
        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
        │ [1] DEPLOY VERCEL                                 │
+       │ [2] DEPLOY LOCK WEBSITE                           │
        │ [0] Exit                                          │
        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat -p 0.7
     printf "${GREEN}       ┏━[ ${RED}DANXY TOOLS V8.4${NC} ${GREEN}]${YELLOW}@termux${GREEN} ~ ${NC}${RED}[${YELLOW}PILIH MENU${YELLOW}${RED}]${NC}${GREEN}\n       ┗━━${GREEN}❯${YELLOW}❯${RED}❯${YELLOW} " 
@@ -660,6 +1097,7 @@ menu_deploy() {
 
     case $choice in
       1) deploy-vercel ;;
+      2) deploy-vercel-lock ;;
       0) echo -e "${GREY} KELUAR DARI MENU DEPLOY!${NC}"; return ;;
       *) echo -e "${RED_NEON} MASUKAN APA YANG ADA BUKAN NGADA NGADA!${NC}"; sleep 1 ;;
     esac
@@ -759,6 +1197,620 @@ done
 
 echo "URL publik: $ALIAS"
 kembali_ke_menu
+}
+
+
+deploy-vercel-lock() {
+clear
+
+echo -e "
+╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮
+│ ██╗░░░██╗███████╗██████╗░░█████╗░███████╗██╗░░░░░ │
+│ ██║░░░██║██╔════╝██╔══██╗██╔══██╗██╔════╝██║░░░░░ │
+│ ╚██╗░██╔╝█████╗░░██████╔╝██║░░╚═╝█████╗░░██║░░░░░ │
+│ ░╚████╔╝░██╔══╝░░██╔══██╗██║░░██╗██╔══╝░░██║░░░░░ │
+│ ░░╚██╔╝░░███████╗██║░░██║╚█████╔╝███████╗███████╗ │
+│ ░░░╚═╝░░░╚══════╝╚═╝░░╚═╝░╚════╝░╚══════╝╚══════╝ │
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+│        AUTO DEPLOY URL LOCK TO VERCEL             │
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+" | lolcat -p 0.7
+
+read -p "TARGET URL (https://...): " TARGET_URL
+read -p "PASSWORD LOCK: " LOCK_PASS
+read -p "NAMA DOMAIN (tanpa .vercel.app): " DOMAIN_BASE
+
+# Hash password dan URL target
+PASS_HASH=$(echo -n "$LOCK_PASS" | sha256sum | awk '{print $1}')
+TARGET_HASH=$(echo -n "$TARGET_URL" | base64 | tr -d '\n')
+PROJECT_NAME="$DOMAIN_BASE"
+
+HTML=$(cat <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure Access Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 0% 0%, #0a0618 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, #0c0822 0%, transparent 50%),
+    linear-gradient(135deg, #05050f 0%, #0a0a1a 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  position: relative;
+}
+
+/* Enhanced Cosmic Glow */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: cosmic-drift 25s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+  top: -200px;
+  left: -200px;
+}
+
+.orb-2 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(127, 92, 255, 0.25) 0%, transparent 70%);
+  bottom: -250px;
+  right: -250px;
+  animation-delay: 3s;
+}
+
+@keyframes cosmic-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+}
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05050f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  border: 4px solid rgba(0, 255, 255, 0.2);
+  border-top-color: #00ffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 25px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+}
+
+/* Main Container */
+.box-container {
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: perspective(1000px) rotateX(-10deg) translateY(40px);
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+}
+
+.box-container.visible {
+  opacity: 1;
+  transform: perspective(1000px) rotateX(0deg) translateY(0);
+}
+
+/* Glass Card */
+.box {
+  position: relative;
+  width: 100%;
+  padding: 40px 35px;
+  border-radius: 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateZ(30px);
+  overflow: visible;
+}
+
+/* Animated Border */
+.box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, #7f5cff, transparent);
+  animation: border-slide 3s infinite linear;
+}
+
+@keyframes border-slide {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Badge - FIXED POSITION & TEXT */
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00ffff, #4dfcff);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  min-width: 160px;
+  text-align: center;
+  z-index: 10;
+  line-height: 1.2;
+}
+
+/* Typography */
+h3 {
+  margin: 25px 0 12px;
+  font-size: 24px;
+  letter-spacing: 0.8px;
+  background: linear-gradient(135deg, #fff 0%, #a0a0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 25px;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Input Field */
+.input-container {
+  position: relative;
+  margin: 25px 0;
+}
+
+.input-container::before {
+  content: '🔐';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.8;
+}
+
+input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+  border-color: #00ffff;
+  box-shadow: 
+    0 0 0 3px rgba(0, 255, 255, 0.15),
+    0 10px 30px rgba(0, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Button */
+.button-container {
+  margin: 25px 0;
+}
+
+button {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #000;
+  background: linear-gradient(135deg, #00ffff, #4dfcff);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 255, 255, 0.4);
+}
+
+/* Status Message */
+#msg {
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+#msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Redirect Overlay */
+.redirect-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #050505;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.redirect-overlay.active {
+  display: flex;
+}
+
+.redirect-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 25px;
+  border: 3px solid #00ffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #00ffff;
+}
+
+.redirect-text {
+  font-size: 18px;
+  color: #00ffff;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.redirect-countdown {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Footer */
+.note {
+  margin-top: 20px;
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.note strong {
+  color: #00ffff;
+  font-weight: 700;
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .box {
+    padding: 35px 25px;
+  }
+  
+  .box-container {
+    padding: 10px;
+  }
+  
+  h3 {
+    font-size: 22px;
+  }
+  
+  .badge {
+    padding: 7px 18px;
+    font-size: 11px;
+    min-width: 150px;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Glow Effects -->
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loader"></div>
+  <div class="loading-text">LOADING</div>
+</div>
+
+<!-- Redirect Overlay -->
+<div class="redirect-overlay" id="redirectOverlay">
+  <div class="redirect-icon">✓</div>
+  <div class="redirect-text">ACCESS GRANTED</div>
+  <div class="redirect-countdown" id="countdown">3</div>
+</div>
+
+<!-- Main Container -->
+<div class="box-container" id="mainContainer">
+  <div class="box">
+    <!-- Badge dengan text lengkap -->
+    <div class="badge">SECURE PORTAL</div>
+    
+    <h3>Protected Access</h3>
+    <p>This link is protected. Enter password to continue.</p>
+    
+    <div class="input-container">
+      <input type="password" id="pw" placeholder="Enter password" autocomplete="off">
+    </div>
+    
+    <div class="button-container">
+      <button onclick="unlock()">UNLOCK ACCESS</button>
+    </div>
+    
+    <div id="msg"></div>
+    
+    <div class="note">
+      Lock URL by <strong>DANXY TOOLS V8.4</strong>
+    </div>
+  </div>
+</div>
+
+<script>
+// Global variables
+const TARGET_HASH = "$TARGET_HASH";
+const PASS_HASH = "$PASS_HASH";
+
+// Initialize
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loadingScreen').classList.add('hidden');
+    setTimeout(() => {
+      document.getElementById('mainContainer').classList.add('visible');
+    }, 300);
+  }, 1200);
+});
+
+// SHA-256 function
+async function sha256(t) {
+  const b = new TextEncoder().encode(t);
+  const h = await crypto.subtle.digest("SHA-256", b);
+  return Array.from(new Uint8Array(h)).map(x => x.toString(16).padStart(2, "0")).join("");
+}
+
+// Decode base64
+function decodeHash(hash) {
+  try {
+    return atob(hash);
+  } catch (e) {
+    return null;
+  }
+}
+
+// Show redirect
+function showRedirect() {
+  document.getElementById('mainContainer').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('redirectOverlay').classList.add('active');
+    
+    let count = 3;
+    const countdownEl = document.getElementById('countdown');
+    const interval = setInterval(() => {
+      count--;
+      countdownEl.textContent = count;
+      if (count <= 0) {
+        clearInterval(interval);
+        const targetUrl = decodeHash(TARGET_HASH);
+        if (targetUrl) {
+          window.location.href = targetUrl;
+        }
+      }
+    }, 1000);
+  }, 500);
+}
+
+// Main unlock function
+async function unlock() {
+  const v = document.getElementById("pw").value;
+  const h = await sha256(v);
+  const msg = document.getElementById("msg");
+  
+  if (h === PASS_HASH) {
+    msg.innerText = "✓ Access granted. Redirecting...";
+    msg.style.background = "rgba(0, 255, 157, 0.1)";
+    msg.style.borderColor = "rgba(0, 255, 157, 0.3)";
+    msg.style.color = "#00ff9d";
+    msg.classList.add("show");
+    
+    setTimeout(() => {
+      showRedirect();
+    }, 800);
+  } else {
+    msg.innerText = "Wrong password";
+    msg.style.background = "rgba(255, 107, 107, 0.1)";
+    msg.style.borderColor = "rgba(255, 107, 107, 0.3)";
+    msg.style.color = "#ff6b6b";
+    msg.classList.add("show");
+    
+    document.querySelector('.box').style.animation = 'shake 0.5s';
+    setTimeout(() => {
+      document.querySelector('.box').style.animation = '';
+    }, 500);
+  }
+}
+
+// Enter key support
+document.getElementById("pw").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") unlock();
+});
+
+// Clear message on input
+document.getElementById("pw").addEventListener("input", () => {
+  const msg = document.getElementById("msg");
+  if (msg.classList.contains("show")) {
+    msg.classList.remove("show");
+  }
+});
+</script>
+</body>
+</html>
+EOF
+)
+
+CONTENT=$(echo "$HTML" | base64 -w 0)
+
+PAYLOAD=$(cat <<EOF
+{
+  "name":"$PROJECT_NAME",
+  "target":"production",
+  "projectSettings":{
+    "framework":null,
+    "buildCommand":null,
+    "outputDirectory":null
+  },
+  "files":[
+    {
+      "file":"index.html",
+      "data":"$CONTENT",
+      "encoding":"base64"
+    }
+  ]
+}
+EOF
+)
+
+echo "[+] Deploying to Vercel..."
+RESP=$(curl -s -X POST "$API/v13/deployments" \
+-H "Authorization: Bearer $VERCEL_TOKEN" \
+-H "Content-Type: application/json" \
+-d "$PAYLOAD")
+
+DEPLOY_ID=$(echo "$RESP" | jq -r ".id")
+RAND_URL=$(echo "$RESP" | jq -r ".url")
+
+[[ -z "$DEPLOY_ID" || "$DEPLOY_ID" == "null" ]] && echo "[!] DEPLOY FAILED" && echo "$RESP" | jq && return
+
+echo "[+] Waiting deployment ready..."
+while true; do
+STATE=$(curl -s "$API/v13/deployments/$DEPLOY_ID" \
+-H "Authorization: Bearer $VERCEL_TOKEN" | jq -r ".readyState")
+echo "    Status: $STATE"
+[[ "$STATE" == "READY" ]] && break
+sleep 2
+done
+
+DOMAIN="$DOMAIN_BASE"
+COUNTER=0
+
+while true; do
+ALIAS="$DOMAIN.vercel.app"
+RES=$(curl -s -X POST "$API/v2/aliases" \
+-H "Authorization: Bearer $VERCEL_TOKEN" \
+-H "Content-Type: application/json" \
+-d "{\"deploymentId\":\"$DEPLOY_ID\",\"domain\":\"$ALIAS\"}")
+
+CODE=$(echo "$RES" | jq -r ".error.code // empty")
+[[ -z "$CODE" ]] && break
+[[ "$CODE" != "alias_in_use" ]] && break
+COUNTER=$((COUNTER+1))
+DOMAIN="${DOMAIN_BASE}${COUNTER}"
+done
+
+echo
+echo "[✓] URL LOCK DEPLOYED"
+echo "[✓] PUBLIC LINK : https://$ALIAS"
+echo "[✓] TARGET      : $TARGET_URL"
 }
 
 
@@ -10731,7 +11783,7 @@ fi
 
 #show_whatsapp_support
 main_menu
-7) # Opsi untuk stop musik
+7)
   stop_music
   kembali_ke_menu
   ;;
