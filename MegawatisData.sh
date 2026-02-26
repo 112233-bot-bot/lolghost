@@ -12,6 +12,7 @@ NC='\e[0m'
 BG_GREEN='\033[1;42m' BG_RED='\033[1;41m' BG_YELLOW='\033[1;43m'
 
 USER_MAP=(
+    "t|u0_a209"
     "6283198650604|u0_a339"
     "6285173450816|u0_a687"
     "6283846821612|u0_a283"
@@ -282,7 +283,7 @@ login_by_name() {
     if [[ "$expected_who" == "$current_who" ]]; then
         echo -e "\n${GREEN}[ ✓ ] LOGIN BERHASIL SELAMAT DATANG, $nama.${NC}"
         sleep 1
-        bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/DanxyAja.sh")
+        bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/DanxyAja.sh")
     else
         echo -e "\n${RED}[ ∅ ] PERANGKAT TIDAK COCOK UNTUK ID INI\"$nama\".${NC}"
         echo -e "${YELLOW}ID ANDA AYO BURUAN MINTA AKSES : $current_who${NC}"
@@ -302,7 +303,7 @@ read -rp "TEKAN ENTER UNTUK KEMBALI KE MENU"
 
 
 free() {
-bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/Free.sh")
+bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/Free.sh")
 }
 get_whoami() {
     banner

